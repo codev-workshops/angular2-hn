@@ -1,3 +1,4 @@
+<!-- A progressive Hacker News client built with Angular 9, featuring offline support via a Workbox-powered service worker. -->
 <p align="center">
   <a href="https://angular2-hn.firebaseapp.com">
     <img alt="Angular 2 HN" title="Angular 2 HN" src="http://i.imgur.com/J303pQ4.png" width="150">
