@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
@@ -12,7 +12,7 @@ import { Story } from '../../shared/models/story';
   styleUrls: ['./feed.component.scss']
 })
 
-export class FeedComponent implements OnInit {
+export class FeedComponent implements OnInit, OnDestroy {
   typeSub: Subscription;
   pageSub: Subscription;
   items: Story[];
@@ -25,6 +25,15 @@ export class FeedComponent implements OnInit {
     private _hackerNewsAPIService: HackerNewsAPIService,
     private route: ActivatedRoute
   ) { }
+
+  ngOnDestroy() {
+    if (this.typeSub) {
+      this.typeSub.unsubscribe();
+    }
+    if (this.pageSub) {
+      this.pageSub.unsubscribe();
+    }
+  }
 
   ngOnInit() {
     this.typeSub = this.route

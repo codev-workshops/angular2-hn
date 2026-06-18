@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { Subscription } from 'rxjs/Subscription';
@@ -11,7 +11,7 @@ import { User } from '../shared/models/user';
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.scss']
 })
-export class UserComponent implements OnInit {
+export class UserComponent implements OnInit, OnDestroy {
   sub: Subscription;
   user: User;
   errorMessage = '';
@@ -21,6 +21,12 @@ export class UserComponent implements OnInit {
     private route: ActivatedRoute,
     private _location: Location
   ) {}
+
+  ngOnDestroy() {
+    if (this.sub) {
+      this.sub.unsubscribe();
+    }
+  }
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {

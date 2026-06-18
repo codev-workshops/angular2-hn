@@ -66,17 +66,17 @@ export class SettingsService implements OnDestroy {
     localStorage.setItem('openLinkInNewTab', JSON.stringify(this.settings.openLinkInNewTab));
   }
 
-  setTheme(theme) {
+  setTheme(theme: string) {
     this.settings.theme = theme;
     localStorage.setItem('theme', this.settings.theme);
   }
 
-  setFont(fontSize) {
+  setFont(fontSize: string) {
     this.settings.titleFontSize = fontSize;
     localStorage.setItem('titleFontSize', this.settings.titleFontSize);
   }
 
-  setSpacing(listSpace) {
+  setSpacing(listSpace: string) {
     this.settings.listSpacing = listSpace;
     localStorage.setItem('listSpacing', this.settings.listSpacing);
   }
