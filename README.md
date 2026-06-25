@@ -84,6 +84,16 @@ Note: Any Service Worker changes will not be reflected when you run the applicat
  - `npm run precache` to generate the service worker file
  - `npm run static-serve` to load the application along with the service worker asset using [live-server](https://github.com/tapio/live-server)
 
+## E2E Testing (Playwright)
+
+Playwright-based end-to-end tests live in `e2e-playwright/`. To run them:
+
+```bash
+NODE_OPTIONS=--openssl-legacy-provider npx playwright test
+```
+
+Screenshots are saved to `e2e-playwright/screenshots/`.
+
 ## Contributors
 
 A million thanks to some awesome people :)
