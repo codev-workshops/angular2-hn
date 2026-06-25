@@ -238,6 +238,21 @@
   $theme-amoledblack-secondary-color
 );
 
+@include theme(
+  solarized,
+  $theme-solarized-body-background-color,
+  $theme-solarized-wrapper-background-color,
+  $theme-solarized-wrapper-mobile-background-color,
+  $theme-solarized-text-color,
+  $theme-solarized-text-color,
+  $theme-solarized-subtext-color,
+  $theme-solarized-header-background-color,
+  $theme-solarized-subtext-color,
+  $theme-solarized-secondary-color,
+  $theme-solarized-logo-inner,
+  $theme-solarized-border
+);
+
 /* ----------------------------------
 
   Include your new theme here as well as the settings component

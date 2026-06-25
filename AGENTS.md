@@ -68,6 +68,7 @@ yarn lint           # or: ng lint
 - Use camelCase for variables, methods, and properties.
 - Component styles live next to each component as `.scss`; reuse the shared theme variables and mixins in `src/app/shared/scss/` instead of hardcoding colors.
 - Use the existing `HackerNewsAPIService` (`src/app/shared/services/`) for HN data access; it already wraps `unfetch`/`node-fetch` — don't add axios or other HTTP libraries.
+- For localStorage persistence, follow the `SettingsService` / `BookmarkService` pattern in `src/app/shared/services/`.
 - Formatting follows the Prettier config in `package.json` (`trailingComma: "es5"`, `tabWidth: 4`, `singleQuote: true`, `printWidth: 120`), plus `tslint.json` and `.editorconfig`.
 
 ## Conventions for Agents

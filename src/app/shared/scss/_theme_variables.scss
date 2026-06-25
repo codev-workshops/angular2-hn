@@ -35,3 +35,16 @@ $theme-amoledblack-body-background-color: #000;
 $theme-amoledblack-text-color: rgba(255, 255, 255, 0.75);
 $theme-amoledblack-subtext-color: rgba(255, 255, 255, 0.5);
 $theme-amoledblack-secondary-color: rgba(255, 255, 255, 0.6);
+
+// Solarized theme colors
+$theme-solarized-body-background-color: #002b36;        // base03
+$theme-solarized-wrapper-background-color: #073642;     // base02
+$theme-solarized-wrapper-mobile-background-color: #073642;
+$theme-solarized-text-color: #839496;                   // base0
+$theme-solarized-subtext-color: #657b83;                // base00
+$theme-solarized-secondary-color: #2aa198;              // cyan
+$theme-solarized-header-background-color: #073642;      // base02
+$theme-solarized-logo-inner: $theme-solarized-header-background-color;
+
+// Solarized theme extras
+$theme-solarized-border: 2px solid #2aa198;

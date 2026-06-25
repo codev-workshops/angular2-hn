@@ -1,0 +1,14 @@
+<div class="main-content">
+  <div *ngIf="bookmarks.length === 0" class="empty-state">
+    <p>No saved stories yet.</p>
+    <p class="hint">Click the ★ icon next to any story to save it here.</p>
+  </div>
+
+  <div *ngIf="bookmarks.length > 0">
+    <ol>
+      <li *ngFor="let item of bookmarks" class="post">
+        <item class="item-block" [item]="item"></item>
+      </li>
+    </ol>
+  </div>
+</div>
