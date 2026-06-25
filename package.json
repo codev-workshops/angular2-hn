@@ -6,8 +6,10 @@
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
+    "test:coverage": "ng test --code-coverage",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "postinstall": "sed -i 's/if (req.headers.range)/if (req.headers \\&\\& req.headers.range)/' node_modules/webpack-dev-middleware/lib/util.js || true"
   },
   "private": true,
   "dependencies": {
