@@ -13,7 +13,12 @@
   <div class="subtext-palm">
     <div class="details" *ngIf="item.type !== 'job'">
       <span class="name"><a [routerLink]="['/user', item.user]" routerLinkActive="active">{{item.user}}</a></span>
-      <span class="right">{{item.points}} ★</span>
+      <span class="right">
+        {{item.points}} ★
+        <span class="bookmark-icon" (click)="toggleBookmark()" [class.bookmarked]="isBookmarked" title="{{isBookmarked ? 'Remove bookmark' : 'Save story'}}">
+          &#9733;
+        </span>
+      </span>
     </div>
     <div class="details">
     {{ item.time_ago }}
@@ -34,6 +39,9 @@
           {{item.comments_count | comment }}
         </a>
       </span>
+    </span>
+    <span class="bookmark-icon" (click)="toggleBookmark()" [class.bookmarked]="isBookmarked" title="{{isBookmarked ? 'Remove bookmark' : 'Save story'}}">
+      &#9733;
     </span>
   </div>
 </div>
