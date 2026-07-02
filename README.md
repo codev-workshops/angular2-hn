@@ -1,3 +1,4 @@
+<!-- This repo is a progressive Hacker News client built with Angular 9, TypeScript, and RxJS, served as an offline-capable PWA. -->
 <!-- A progressive Hacker News client built with Angular 9, featuring offline support via a Workbox-powered service worker. -->
 <p align="center">
   <a href="https://angular2-hn.firebaseapp.com">

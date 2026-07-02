@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { Subscription } from 'rxjs/Subscription';
@@ -14,7 +14,7 @@ import { Settings } from '../shared/models/settings';
   templateUrl: './item-details.component.html',
   styleUrls: ['./item-details.component.scss']
 })
-export class ItemDetailsComponent implements OnInit {
+export class ItemDetailsComponent implements OnInit, OnDestroy {
   sub: Subscription;
   item: Story;
   errorMessage = '';
@@ -41,6 +41,10 @@ export class ItemDetailsComponent implements OnInit {
 
   goBack() {
     this._location.back();
+  }
+
+  ngOnDestroy() {
+    this.sub.unsubscribe();
   }
 
   get hasUrl(): boolean {

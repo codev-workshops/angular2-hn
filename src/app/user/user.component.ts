@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { Subscription } from 'rxjs/Subscription';
@@ -11,7 +11,7 @@ import { User } from '../shared/models/user';
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.scss']
 })
-export class UserComponent implements OnInit {
+export class UserComponent implements OnInit, OnDestroy {
   sub: Subscription;
   user: User;
   errorMessage = '';
@@ -29,6 +29,10 @@ export class UserComponent implements OnInit {
         this.user = data;
       }, error => this.errorMessage = 'Could not load user ' + userID + '.');
     });
+  }
+
+  ngOnDestroy() {
+    this.sub.unsubscribe();
   }
 
   goBack() {
