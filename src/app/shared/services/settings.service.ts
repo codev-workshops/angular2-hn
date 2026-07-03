@@ -10,6 +10,7 @@ export class SettingsService implements OnDestroy {
     showSettings : false,
     openLinkInNewTab: localStorage.getItem('openLinkInNewTab') ? JSON.parse(localStorage.getItem('openLinkInNewTab')) : false,
     theme: 'default',
+    themeMode: 'system',
     titleFontSize: localStorage.getItem('titleFontSize') ? localStorage.getItem('titleFontSize') : '16',
     listSpacing: localStorage.getItem('listSpacing') ? localStorage.getItem('listSpacing') : '0',
   };
@@ -26,7 +27,9 @@ export class SettingsService implements OnDestroy {
   }
 
   handleSystemPreferredColorSchemeChange = (event: MediaQueryListEvent) => {
-    this.setTheme(event.matches ? 'night' : 'default');
+    if (this.settings.themeMode === 'system') {
+      this.applyThemeForMode();
+    }
   }
 
   subscribeToSystemPreferredColorScheme() {
@@ -37,17 +40,42 @@ export class SettingsService implements OnDestroy {
   }
 
   initTheme() {
+    const savedMode = localStorage.getItem('themeMode');
     const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-      this.settings.theme = savedTheme;
-    } else {
-      this.darkColorSchemeMedia.dispatchEvent(
-        new MediaQueryListEvent('change', {
-          media: this.darkColorSchemeMedia.media,
-          matches: this.darkColorSchemeMedia.matches
-        })
-      );
+
+    if (savedMode) {
+      this.settings.themeMode = savedMode;
+    } else if (savedTheme) {
+      // Legacy migration: existing users who only have a saved theme
+      if (savedTheme === 'amoledblack' || savedTheme === 'solarized') {
+        this.settings.themeMode = 'custom';
+      } else if (savedTheme === 'night') {
+        this.settings.themeMode = 'dark';
+      } else {
+        this.settings.themeMode = 'light';
+      }
+      localStorage.setItem('themeMode', this.settings.themeMode);
     }
+
+    this.applyThemeForMode();
+  }
+
+  applyThemeForMode() {
+    switch (this.settings.themeMode) {
+      case 'light':
+        this.settings.theme = 'default';
+        break;
+      case 'dark':
+        this.settings.theme = 'night';
+        break;
+      case 'system':
+        this.settings.theme = this.darkColorSchemeMedia.matches ? 'night' : 'default';
+        break;
+      default:
+        // custom mode: keep whatever theme is already set
+        break;
+    }
+    localStorage.setItem('theme', this.settings.theme);
   }
 
   unsubscribeFromSystemPreferredColorScheme() {
@@ -55,6 +83,12 @@ export class SettingsService implements OnDestroy {
       'change',
       this.handleSystemPreferredColorSchemeChange
     );
+  }
+
+  setThemeMode(mode: string) {
+    this.settings.themeMode = mode;
+    localStorage.setItem('themeMode', mode);
+    this.applyThemeForMode();
   }
 
   toggleSettings() {
@@ -66,17 +100,19 @@ export class SettingsService implements OnDestroy {
     localStorage.setItem('openLinkInNewTab', JSON.stringify(this.settings.openLinkInNewTab));
   }
 
-  setTheme(theme) {
+  setTheme(theme: string) {
+    this.settings.themeMode = 'custom';
+    localStorage.setItem('themeMode', 'custom');
     this.settings.theme = theme;
     localStorage.setItem('theme', this.settings.theme);
   }
 
-  setFont(fontSize) {
+  setFont(fontSize: string) {
     this.settings.titleFontSize = fontSize;
     localStorage.setItem('titleFontSize', this.settings.titleFontSize);
   }
 
-  setSpacing(listSpace) {
+  setSpacing(listSpace: string) {
     this.settings.listSpacing = listSpace;
     localStorage.setItem('listSpacing', this.settings.listSpacing);
   }
