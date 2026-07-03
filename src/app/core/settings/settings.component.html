@@ -14,36 +14,50 @@
             </div>
             <div class="theme-controls">
                 <div class="control-section">
-                    <h2>Select a theme</h2>
+                    <h2>Appearance</h2>
                     <div>
                         <label>
-                        <input #default 
-                            name="theme" 
-                            type="radio" 
-                            value="default" 
-                            [checked]="settings.theme === default.value"
-                            (click)="selectTheme(default.value)" />
-                            Default
+                        <input #modeSystem
+                            name="themeMode"
+                            type="radio"
+                            value="system"
+                            [checked]="settings.themeMode === modeSystem.value"
+                            (click)="selectThemeMode(modeSystem.value)" />
+                            System
                         </label>
                     </div>
                     <div>
                         <label>
-                        <input #night 
-                            name="theme" 
-                            type="radio" 
-                            value="night" 
-                            [checked]="settings.theme === night.value" 
-                            (click)="selectTheme(night.value)" />
-                            Night
+                        <input #modeLight
+                            name="themeMode"
+                            type="radio"
+                            value="light"
+                            [checked]="settings.themeMode === modeLight.value"
+                            (click)="selectThemeMode(modeLight.value)" />
+                            Light
                         </label>
                     </div>
                     <div>
                         <label>
-                        <input 
-                            #amoledblack 
-                            name="theme" 
-                            type="radio" 
-                            value="amoledblack" 
+                        <input #modeDark
+                            name="themeMode"
+                            type="radio"
+                            value="dark"
+                            [checked]="settings.themeMode === modeDark.value"
+                            (click)="selectThemeMode(modeDark.value)" />
+                            Dark
+                        </label>
+                    </div>
+                </div>
+                <div class="control-section">
+                    <h2>Extra Themes</h2>
+                    <div>
+                        <label>
+                        <input
+                            #amoledblack
+                            name="extraTheme"
+                            type="radio"
+                            value="amoledblack"
                             [checked]="settings.theme === amoledblack.value"
                             (click)="selectTheme(amoledblack.value)" />
                             Black (AMOLED)
@@ -51,11 +65,11 @@
                     </div>
                     <div>
                         <label>
-                        <input 
-                            #solarized 
-                            name="theme" 
-                            type="radio" 
-                            value="solarized" 
+                        <input
+                            #solarized
+                            name="extraTheme"
+                            type="radio"
+                            value="solarized"
                             [checked]="settings.theme === solarized.value"
                             (click)="selectTheme(solarized.value)" />
                             Solarized
@@ -71,7 +85,7 @@
                             #titleFont 
                             min="1" 
                             [value]="settings.titleFontSize" 
-                            name="theme" 
+                            name="titleFont" 
                             type="number" 
                             (keyup)="changeTitleFont(titleFont.value)" />
                         </label>
@@ -83,7 +97,7 @@
                             #listSpacing 
                             min="0" 
                             [value]="settings.listSpacing" 
-                            name="theme" 
+                            name="listSpacing" 
                             type="number" 
                             (keyup)="changeSpacing(listSpacing.value)" />
                         </label>
