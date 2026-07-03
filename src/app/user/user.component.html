@@ -14,6 +14,6 @@
     <p class="age">Created {{ user.created }}</p>
   </div>
   <div class="other-details" *ngIf="user.about">
-    <p [innerHTML]="user.about"></p>
+    <p [innerHTML]="user.about | safeHtml"></p>
   </div>
 </div>
