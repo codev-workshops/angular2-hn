@@ -30,6 +30,10 @@ export class SettingsComponent implements OnInit {
     this._settingsService.setTheme(theme);
   }
 
+  selectAuto() {
+    this._settingsService.enableAutoTheme();
+  }
+
   changeTitleFont(val){
     this._settingsService.setFont(val);
   }

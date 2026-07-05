@@ -17,11 +17,22 @@
                     <h2>Select a theme</h2>
                     <div>
                         <label>
+                        <input #auto 
+                            name="theme" 
+                            type="radio" 
+                            value="auto" 
+                            [checked]="settings.autoTheme"
+                            (click)="selectAuto()" />
+                            Auto (follow system)
+                        </label>
+                    </div>
+                    <div>
+                        <label>
                         <input #default 
                             name="theme" 
                             type="radio" 
                             value="default" 
-                            [checked]="settings.theme === default.value"
+                            [checked]="!settings.autoTheme && settings.theme === default.value"
                             (click)="selectTheme(default.value)" />
                             Default
                         </label>
@@ -32,7 +43,7 @@
                             name="theme" 
                             type="radio" 
                             value="night" 
-                            [checked]="settings.theme === night.value" 
+                            [checked]="!settings.autoTheme && settings.theme === night.value" 
                             (click)="selectTheme(night.value)" />
                             Night
                         </label>
@@ -44,7 +55,7 @@
                             name="theme" 
                             type="radio" 
                             value="amoledblack" 
-                            [checked]="settings.theme === amoledblack.value"
+                            [checked]="!settings.autoTheme && settings.theme === amoledblack.value"
                             (click)="selectTheme(amoledblack.value)" />
                             Black (AMOLED)
                         </label>
