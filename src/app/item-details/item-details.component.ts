@@ -29,6 +29,12 @@ export class ItemDetailsComponent implements OnInit, OnDestroy {
     this.settings = this._settingsService.settings;
   }
 
+  ngOnDestroy() {
+    if (this.sub) {
+      this.sub.unsubscribe();
+    }
+  }
+
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
       let itemID = +params['id'];

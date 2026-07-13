@@ -22,6 +22,12 @@ export class UserComponent implements OnInit, OnDestroy {
     private _location: Location
   ) {}
 
+  ngOnDestroy() {
+    if (this.sub) {
+      this.sub.unsubscribe();
+    }
+  }
+
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
       let userID = params['id'];

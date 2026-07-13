@@ -26,6 +26,15 @@ export class FeedComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute
   ) { }
 
+  ngOnDestroy() {
+    if (this.typeSub) {
+      this.typeSub.unsubscribe();
+    }
+    if (this.pageSub) {
+      this.pageSub.unsubscribe();
+    }
+  }
+
   ngOnInit() {
     this.typeSub = this.route
       .data
