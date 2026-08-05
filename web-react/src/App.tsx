@@ -1,10 +1,10 @@
-import { Routes, Route } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { useSettingsStore } from './stores/settings';
-import { ItemHarness } from './harness/ItemHarness';
-import { ShellHarness } from './harness/ShellHarness';
-import { FeedHarness } from './harness/FeedHarness';
-import { ItemDetailsHarness } from './harness/ItemDetailsHarness';
-import { UserHarness } from './harness/UserHarness';
+import { Header } from './components/Header';
+import { Footer } from './components/Footer';
+import { FeedPage } from './pages/FeedPage';
+import { ItemDetailsPage } from './pages/ItemDetailsPage';
+import { UserPage } from './pages/UserPage';
 import './App.scss';
 
 export function App() {
@@ -14,15 +14,18 @@ export function App() {
     <div className={theme}>
       <div className="body-cover"></div>
       <div className="wrapper">
+        <Header />
         <Routes>
-          {/* TEMPORARY harness routes — removed in the final routing wave */}
-          <Route path="/harness/item" element={<ItemHarness />} />
-          <Route path="/harness/shell" element={<ShellHarness />} />
-          <Route path="/harness/feed/:page" element={<FeedHarness />} />
-          <Route path="/harness/item-details/:id" element={<ItemDetailsHarness />} />
-          <Route path="/harness/user/:id" element={<UserHarness />} />
-          <Route path="*" element={<p>web-react scaffold — real routes land in the final wave</p>} />
+          <Route path="/" element={<Navigate to="/news/1" replace />} />
+          <Route path="/news/:page" element={<FeedPage feedType="news" />} />
+          <Route path="/newest/:page" element={<FeedPage feedType="newest" />} />
+          <Route path="/show/:page" element={<FeedPage feedType="show" />} />
+          <Route path="/ask/:page" element={<FeedPage feedType="ask" />} />
+          <Route path="/jobs/:page" element={<FeedPage feedType="jobs" />} />
+          <Route path="/item/:id" element={<ItemDetailsPage />} />
+          <Route path="/user/:id" element={<UserPage />} />
         </Routes>
+        <Footer />
       </div>
     </div>
   );
