@@ -30,7 +30,6 @@ export function Comment({ comment }: { comment: CommentModel }) {
         <div hidden={collapse}>
           <p
             className="comment-text"
-            hidden={collapse}
             dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(comment.content) }}
           ></p>
           <ul className="subtree">

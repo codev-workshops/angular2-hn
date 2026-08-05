@@ -38,7 +38,7 @@ describe('Comment', () => {
     fireEvent.click(toggle);
     expect(screen.getByText('[+]')).toBeInTheDocument();
     expect(text).not.toBeVisible();
-    expect(text).toHaveAttribute('hidden');
+    expect(text.parentElement).toHaveAttribute('hidden');
     fireEvent.click(screen.getByText('[+]'));
     expect(screen.getByText('[-]')).toBeInTheDocument();
     expect(text).toBeVisible();
