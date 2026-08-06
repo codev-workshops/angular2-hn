@@ -10,7 +10,6 @@ export const router = createBrowserRouter([
             {
                 index: true,
                 loader: () => redirect('/news/1'),
-                lazy: async () => ({ Component: Placeholder }),
             },
             {
                 path: 'news/:page',
