@@ -22,6 +22,7 @@ export function StoryItem({ item }: StoryItemProps) {
     return (
         <div className="item-block">
             <div style={{ marginBottom: `${listSpacing}px` }}>
+                {' '}
                 {external ? (
                     <p>
                         <a
@@ -33,13 +34,18 @@ export function StoryItem({ item }: StoryItemProps) {
                         >
                             {item.title}
                         </a>
-                        {item.domain && <span className="domain">({item.domain})</span>}
+                        {item.domain && (
+                            <>
+                                {' '}
+                                <span className="domain">({item.domain})</span>
+                            </>
+                        )}
                     </p>
                 ) : (
                     <p>
                         <Link className="title" style={titleStyle} to={itemPath}>
                             {item.title}
-                        </Link>
+                        </Link>{' '}
                     </p>
                 )}
                 <div className="subtext-palm">
@@ -51,30 +57,36 @@ export function StoryItem({ item }: StoryItemProps) {
                             <span className="right">{item.points} ★</span>
                         </div>
                     )}
+                    {!isJob && ' '}
                     <div className="details">
-                        {item.time_ago}{' '}
+                        {isJob && ' '}
+                        {item.time_ago}
+                        {!isJob ? '  ' : ' '}
                         {!isJob && (
                             <Link className="comment-number" to={itemPath}>
-                                • {label}
+                                • {label}{' '}
                             </Link>
                         )}
                     </div>
                 </div>
                 <div className="subtext-laptop">
+                    {' '}
                     {!isJob && (
                         <span>
                             {item.points} points by <Link to={userPath}>{item.user}</Link>
                         </span>
-                    )}{' '}
+                    )}
+                    {!isJob && ' '}
                     <span className={isJob ? undefined : 'item-details'}>
                         {item.time_ago}
                         {!isJob && (
                             <>
-                                {' '}
-                                | <Link to={itemPath}>{label}</Link>
+                                {'  '}|{'  '}
+                                <Link to={itemPath}>{label} </Link>
                             </>
                         )}
                     </span>
+                    {isJob && ' '}
                 </div>
             </div>
         </div>

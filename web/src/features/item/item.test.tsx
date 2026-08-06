@@ -84,6 +84,15 @@ describe('ItemDetailsPage', () => {
 });
 
 describe('CommentNode', () => {
+    it('preserves the legacy comment-meta text separator', () => {
+        render(
+            <MemoryRouter>
+                <CommentNode comment={{ user: 'parent', time_ago: 'now', content: 'comment', comments: [] }} />
+            </MemoryRouter>
+        );
+        expect(document.querySelector('.meta')?.textContent).toBe('[-]parentnow');
+    });
+
     it('sanitizes content, recursively renders, and hides the subtree on collapse', () => {
         render(
             <MemoryRouter>

@@ -22,7 +22,7 @@ export function CommentNode({ comment }: { comment: CommentModel }) {
             <div className={`meta${collapse ? ' meta-collapse' : ''}`}>
                 <span className="collapse" onClick={() => setCollapse((value) => !value)}>
                     [{collapse ? '+' : '-'}]
-                </span>{' '}
+                </span>
                 <Link to={`/user/${comment.user ?? ''}`}>{comment.user}</Link>
                 <span className="time">{comment.time_ago}</span>
             </div>
