@@ -1,3 +1,8 @@
 # One frozen Playwright spec filename per line.
 app-shell.spec.ts
+<<<<<<< HEAD
 feeds.spec.ts
+||||||| 6d571ff
+=======
+item.spec.ts
+>>>>>>> origin/devin/1786036258-phase-2b-item
