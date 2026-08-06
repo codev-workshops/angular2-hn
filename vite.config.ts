@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import { VitePWA } from 'vite-plugin-pwa';
 
 const legacyHeadUrlRewrites = [
     ['meta', 'name', 'twitter:image', 'content', '/assets/images/logo-loading.png', 'assets/images/logo-loading.png'],
@@ -78,9 +79,30 @@ function preserveLegacyHeadUrls() {
     };
 }
 
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
     root: 'web',
-    plugins: [react(), preserveLegacyHeadUrls()],
+    plugins: [
+        react(),
+        preserveLegacyHeadUrls(),
+        ...(mode === 'production'
+            ? [
+                  VitePWA({
+                      registerType: 'autoUpdate',
+                      injectRegister: null,
+                      manifest: false,
+                      devOptions: {
+                          enabled: false,
+                      },
+                      workbox: {
+                          globPatterns: [
+                              '**/*.{html,css,js,ico,json,eot,svg,cur,jpg,png,webp,gif,otf,ttf,woff,woff2,ani}',
+                          ],
+                          runtimeCaching: [],
+                      },
+                  }),
+              ]
+            : []),
+    ],
     server: {
         port: 4200,
         strictPort: true,
@@ -89,4 +111,4 @@ export default defineConfig({
         outDir: '../dist-react',
         emptyOutDir: true,
     },
-});
+}));

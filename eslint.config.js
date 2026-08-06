@@ -2,7 +2,7 @@ import eslint from '@eslint/js';
 import tsParser from '@typescript-eslint/parser';
 import tsPlugin from '@typescript-eslint/eslint-plugin';
 import reactHooks from 'eslint-plugin-react-hooks';
-import ts from 'typescript-modern';
+import ts from 'typescript';
 import path from 'path';
 
 const configFile = ts.readConfigFile('web/tsconfig.json', ts.sys.readFile);

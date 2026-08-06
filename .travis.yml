@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-  - "6.9"
+  - "22.12.0"
 
 branches:
   only:
@@ -8,10 +8,10 @@ branches:
 
 before_script:
   - npm install -g firebase-tools
-  - npm install -g @angular/cli
 
 script:
-  - npm run build
+  - yarn install --frozen-lockfile
+  - yarn build
 
 after_success:
   - firebase use default
