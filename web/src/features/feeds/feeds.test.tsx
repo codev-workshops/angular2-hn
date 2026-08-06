@@ -138,7 +138,7 @@ describe('StoryItem', () => {
         expect(title).toHaveAttribute('rel', 'noopener');
         expect(title).toHaveStyle({ fontSize: '21px' });
         expect(screen.getByText('(example.com)')).toHaveClass('domain');
-        expect(document.querySelector('.item-block')).toHaveStyle({ marginBottom: '7px' });
+        expect(document.querySelector('.item-block > div')).toHaveStyle({ marginBottom: '7px' });
     });
 
     it('renders internal titles and omits external attributes when disabled', () => {
