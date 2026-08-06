@@ -42,7 +42,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: 'user/:id',
-                lazy: async () => ({ Component: Placeholder }),
+                lazy: async () => ({ Component: (await import('./features/user/UserPage')).UserPage }),
             },
         ],
     },
