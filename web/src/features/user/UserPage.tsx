@@ -4,18 +4,12 @@ import { ErrorMessage } from '../../components/ErrorMessage';
 import { Loader } from '../../components/Loader';
 import { fetchUser } from '../../lib/api';
 import { sanitizeHtml } from '../../lib/html';
-
-type UserResponse = {
-    id?: string;
-    karma?: number;
-    created?: string;
-    about?: string;
-};
+import { User } from '../../types/models';
 
 export function UserPage() {
     const { id: userID } = useParams();
     const navigate = useNavigate();
-    const [user, setUser] = useState<UserResponse | null | unknown>();
+    const [user, setUser] = useState<unknown>();
     const [errorMessage, setErrorMessage] = useState('');
 
     useEffect(() => {
@@ -49,7 +43,7 @@ export function UserPage() {
         return <ErrorMessage message={errorMessage} />;
     }
 
-    const profile = user as UserResponse;
+    const profile: User = typeof user === 'object' && user !== null ? (user as User) : {};
     const about = typeof profile.about === 'string' ? profile.about : '';
 
     return (
