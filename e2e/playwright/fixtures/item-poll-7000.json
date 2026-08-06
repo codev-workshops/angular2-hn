@@ -1,0 +1,19 @@
+{
+  "id": 7000,
+  "title": "Frozen poll fixture",
+  "points": 42,
+  "user": "pollster",
+  "time": 0,
+  "time_ago": "1 hour ago",
+  "type": "poll",
+  "url": "item?id=7000",
+  "domain": null,
+  "comments": [],
+  "comments_count": 0,
+  "poll": [
+    {},
+    {}
+  ],
+  "poll_votes_count": 0,
+  "text": "poll body"
+}
