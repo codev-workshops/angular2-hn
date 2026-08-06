@@ -14,27 +14,32 @@ export const router = createBrowserRouter([
             {
                 path: 'news/:page',
                 handle: { feedType: 'news' },
-                lazy: async () => ({ Component: Placeholder }),
+                lazy: async () =>
+                    import('./features/feeds/FeedPage').then(({ FeedPage: Component }) => ({ Component })),
             },
             {
                 path: 'newest/:page',
                 handle: { feedType: 'newest' },
-                lazy: async () => ({ Component: Placeholder }),
+                lazy: async () =>
+                    import('./features/feeds/FeedPage').then(({ FeedPage: Component }) => ({ Component })),
             },
             {
                 path: 'show/:page',
                 handle: { feedType: 'show' },
-                lazy: async () => ({ Component: Placeholder }),
+                lazy: async () =>
+                    import('./features/feeds/FeedPage').then(({ FeedPage: Component }) => ({ Component })),
             },
             {
                 path: 'ask/:page',
                 handle: { feedType: 'ask' },
-                lazy: async () => ({ Component: Placeholder }),
+                lazy: async () =>
+                    import('./features/feeds/FeedPage').then(({ FeedPage: Component }) => ({ Component })),
             },
             {
                 path: 'jobs/:page',
                 handle: { feedType: 'jobs' },
-                lazy: async () => ({ Component: Placeholder }),
+                lazy: async () =>
+                    import('./features/feeds/FeedPage').then(({ FeedPage: Component }) => ({ Component })),
             },
             {
                 path: 'item/:id',
