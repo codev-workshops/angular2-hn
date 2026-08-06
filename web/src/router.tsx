@@ -1,6 +1,5 @@
 import { createBrowserRouter, redirect } from 'react-router';
 import { App } from './App';
-import { Placeholder } from './features/placeholder';
 
 export const router = createBrowserRouter([
     {
