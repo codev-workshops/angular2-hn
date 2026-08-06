@@ -8,6 +8,6 @@ describe('hasHttpUrl', () => {
     });
 
     it('preserves the legacy throw for absent URLs', () => {
-        expect(() => hasHttpUrl(undefined)).toThrow();
+        expect(() => hasHttpUrl(undefined)).toThrowError("Cannot read properties of undefined (reading 'indexOf')");
     });
 });

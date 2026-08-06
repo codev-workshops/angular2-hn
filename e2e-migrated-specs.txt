@@ -1,1 +1,2 @@
 # One frozen Playwright spec filename per line.
+app-shell.spec.ts
