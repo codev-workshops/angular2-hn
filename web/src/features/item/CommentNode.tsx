@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 import { sanitizeHtml } from '../../lib/html';
 import { Comment as CommentModel } from '../../types/models';
 
-// The meta text is byte-exact with the legacy Angular textContent diff on frozen fixtures; see PATTERN.md and do not tidy.
+// The meta text is byte-exact with the legacy Angular textContent diff on frozen fixtures; see MIGRATION-INVARIANTS.md and do not tidy.
 export function CommentNode({ comment }: { comment: CommentModel }) {
     const [collapse, setCollapse] = useState(false);
     const comments = Array.isArray(comment.comments) ? comment.comments : [];

@@ -8,7 +8,7 @@ import { User } from '../../types/models';
 
 const legacySpace = ' ';
 
-// These separators are byte-exact with the legacy Angular textContent diff on frozen fixtures; see PATTERN.md and do not tidy.
+// These separators are byte-exact with the legacy Angular textContent diff on frozen fixtures; see MIGRATION-INVARIANTS.md and do not tidy.
 export function UserPage() {
     const { id: userID } = useParams();
     const navigate = useNavigate();

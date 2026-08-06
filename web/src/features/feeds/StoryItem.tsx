@@ -11,7 +11,7 @@ interface StoryItemProps {
     item: Story;
 }
 
-// These separators are byte-exact with the legacy Angular textContent diff on frozen fixtures; see PATTERN.md and do not tidy them.
+// These separators are byte-exact with the legacy Angular textContent diff on frozen fixtures; see MIGRATION-INVARIANTS.md and do not tidy them.
 export function StoryItem({ item }: StoryItemProps) {
     const openLinkInNewTab = useSettingsStore((state) => state.openLinkInNewTab);
     const titleFontSize = useSettingsStore((state) => state.titleFontSize);

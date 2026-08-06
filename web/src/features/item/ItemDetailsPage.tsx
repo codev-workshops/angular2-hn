@@ -66,7 +66,7 @@ function PollResultView({ result, votes }: { result: PollResult; votes: number }
     );
 }
 
-// These separators are byte-exact with the legacy Angular textContent diff on frozen fixtures; see PATTERN.md and do not tidy.
+// These separators are byte-exact with the legacy Angular textContent diff on frozen fixtures; see MIGRATION-INVARIANTS.md and do not tidy.
 export function ItemDetailsPage() {
     const { id } = useParams();
     const navigate = useNavigate();
