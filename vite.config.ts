@@ -94,6 +94,7 @@ export default defineConfig(({ mode }) => ({
                           enabled: false,
                       },
                       workbox: {
+                          navigateFallback: 'index.html',
                           globPatterns: [
                               '**/*.{html,css,js,ico,json,eot,svg,cur,jpg,png,webp,gif,otf,ttf,woff,woff2,ani}',
                           ],

@@ -37,21 +37,4 @@ export default [
             'no-unused-vars': 'off',
         },
     },
-    {
-        files: ['scripts/**/*.{js,cjs}'],
-        languageOptions: {
-            globals: {
-                __dirname: 'readonly',
-                process: 'readonly',
-                require: 'readonly',
-                console: 'readonly',
-            },
-        },
-        plugins: {
-            'react-hooks': reactHooks,
-        },
-        rules: {
-            ...reactHooks.configs.recommended.rules,
-        },
-    },
 ];

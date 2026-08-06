@@ -5,11 +5,11 @@
     "start": "vite",
     "build": "vite build",
     "typecheck": "tsc -p web/tsconfig.json --noEmit",
-    "lint": "eslint web scripts",
+    "lint": "eslint web",
     "test": "vitest run",
     "test:e2e": "playwright test -c e2e/playwright/playwright.config.ts",
-    "format": "prettier --write web/src web/public/assets scripts vite.config.ts vitest.config.ts eslint.config.js MIGRATION-INVARIANTS.md README.md CONTRIBUTING.md",
-    "format:check": "prettier --check web/src web/public/assets scripts vite.config.ts vitest.config.ts eslint.config.js MIGRATION-INVARIANTS.md README.md CONTRIBUTING.md"
+    "format": "prettier --write web/src web/public/assets vite.config.ts vitest.config.ts eslint.config.js",
+    "format:check": "prettier --check web/src web/public/assets vite.config.ts vitest.config.ts eslint.config.js"
   },
   "private": true,
   "dependencies": {
