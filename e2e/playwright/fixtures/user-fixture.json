@@ -1,0 +1,8 @@
+{
+  "id": "fixture-user",
+  "created_at_i": 1700000000,
+  "created": "Nov 14, 2023",
+  "karma": 1234,
+  "avg": 2.5,
+  "about": "<p>Likes <strong>testing</strong> and <a href=\"/\">Hacker News</a>.</p>"
+}

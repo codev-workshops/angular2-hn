@@ -1,0 +1,12 @@
+{
+  "id": 7003,
+  "title": "Frozen job item",
+  "points": 0,
+  "time": 0,
+  "time_ago": "today",
+  "type": "job",
+  "url": "https://jobs.example.test/frozen",
+  "domain": "jobs.example.test",
+  "comments": [],
+  "comments_count": 0
+}
