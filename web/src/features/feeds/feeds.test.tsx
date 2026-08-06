@@ -173,4 +173,11 @@ describe('StoryItem', () => {
         expect(document.querySelector('.item-details')).toBeInTheDocument();
         expect(document.querySelector('.subtext-laptop')).toHaveTextContent('8 points by spottedmarley');
     });
+
+    it('preserves the legacy feed-row text separators', () => {
+        renderStory(story({ url: 'https://example.com/story', domain: 'example.com' }));
+        expect(document.querySelector('.item-block')?.textContent).toBe(
+            ' A story (example.com)spottedmarley8 ★ 2 hours ago  • 4 comments  8 points by spottedmarley 2 hours ago  |  4 comments '
+        );
+    });
 });

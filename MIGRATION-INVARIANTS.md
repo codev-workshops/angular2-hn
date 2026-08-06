@@ -5,6 +5,7 @@ byte-identical in behavior after the port.
 
 ## Implementation constraints
 - Use route-level `lazy` in the data router, never bare `React.lazy`, because the specs assert immediately after navigation.
+- Angular templates preserve inter-element whitespace while JSX collapses whitespace across newlines; compare rendered `textContent` and use explicit `{' '}` separators when porting templates.
 - Tolerate `null` and non-array response bodies on every read.
 - Use `sanitizeHtml` from `web/src/lib/html.ts` and never raw `dangerouslySetInnerHTML`.
 - Guard `window.ga`.
