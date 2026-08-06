@@ -3,6 +3,14 @@
 These are the contracts the frozen Playwright parity suite depends on. They must be
 byte-identical in behavior after the port.
 
+## Implementation constraints
+- Use route-level `lazy` in the data router, never bare `React.lazy`, because the specs assert immediately after navigation.
+- Angular templates preserve inter-element whitespace while JSX collapses whitespace across newlines; compare rendered `textContent` and use explicit `{' '}` separators when porting templates.
+- Tolerate `null` and non-array response bodies on every read.
+- Use `sanitizeHtml` from `web/src/lib/html.ts` and never raw `dangerouslySetInnerHTML`.
+- Guard `window.ga`.
+- Class names and DOM structure are a frozen contract.
+
 ## HTTP contract (src/app/shared/services/hackernews-api.service.ts)
 - Base URL: `https://node-hnapi.herokuapp.com`
 - `fetchFeed(feedType, page)` -> GET `${base}/${feedType}?page=${page}` -> `Story[]`
@@ -146,10 +154,9 @@ loader / error-message / `div.profile`:
 - `div.app-loader#content > img.logo` + `noscript` JS-required message
 - inline Google Analytics snippet defining `window.ga` then `ga('create','UA-66348622-3','auto')`
 - app root: legacy renders into `<app-root>`; `styles.scss` has `app-root:empty + .app-loader { opacity: 1 }`
-- Angular Service Worker (`ngsw-worker.js`, prod only) precaching index/css/js/manifest (prefetch)
-  and `/assets/**` + image extensions (lazy)
+- Production PWA service worker precaches index/css/js/manifest and static assets; it is not generated or registered during development.
 - App shell: `div.app-loader` visible until the root element has content
-- `firebase.json` hosting: `public: "dist"`, SPA rewrite `** -> /index.html`
+- `firebase.json` hosting: `public: "dist-react"`, SPA rewrite `** -> /index.html`
 
 ## Analytics
 `AppComponent` subscribes to router `NavigationEnd` and calls
