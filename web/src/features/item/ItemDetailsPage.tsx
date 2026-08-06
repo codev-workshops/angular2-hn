@@ -113,10 +113,16 @@ export function ItemDetailsPage() {
                             item.text ? ' head-margin' : ''
                         }`}
                     >
-                        <p>
-                            <TitleLink item={item} openLinkInNewTab={openLinkInNewTab} />
-                            {item.domain && <span className="domain">({item.domain})</span>}
-                        </p>
+                        {isHttpUrl(item.url) ? (
+                            <p>
+                                <TitleLink item={item} openLinkInNewTab={openLinkInNewTab} />
+                                {item.domain && <span className="domain">({item.domain})</span>}
+                            </p>
+                        ) : (
+                            <p>
+                                <TitleLink item={item} openLinkInNewTab={openLinkInNewTab} />
+                            </p>
+                        )}
                         <ItemSubtext item={item} />
                     </div>
                     {item.type === 'poll' && (

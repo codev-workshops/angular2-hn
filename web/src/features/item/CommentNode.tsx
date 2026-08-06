@@ -9,14 +9,16 @@ export function CommentNode({ comment }: { comment: CommentModel }) {
 
     if (comment.deleted) {
         return (
-            <div className="deleted-meta">
-                <span className="collapse">[deleted]</span> | Comment Deleted
+            <div>
+                <div className="deleted-meta">
+                    <span className="collapse">[deleted]</span> | Comment Deleted
+                </div>
             </div>
         );
     }
 
     return (
-        <>
+        <div>
             <div className={`meta${collapse ? ' meta-collapse' : ''}`}>
                 <span className="collapse" onClick={() => setCollapse((value) => !value)}>
                     [{collapse ? '+' : '-'}]
@@ -36,6 +38,6 @@ export function CommentNode({ comment }: { comment: CommentModel }) {
                     </ul>
                 </div>
             </div>
-        </>
+        </div>
     );
 }
