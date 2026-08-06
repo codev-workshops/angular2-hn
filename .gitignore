@@ -42,6 +42,7 @@ testem.log
 /typings
 /test-results/
 /playwright-report/
+/dist-react/
 
 # System Files
 .DS_Store

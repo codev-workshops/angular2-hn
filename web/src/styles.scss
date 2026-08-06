@@ -1,0 +1,54 @@
+@import './styles/app/shared/scss/themes';
+@import './styles/app/app.component';
+@import './styles/app/core/header/header.component';
+@import './styles/app/core/settings/settings.component';
+@import './styles/app/core/footer/footer.component';
+@import './styles/app/shared/components/loader/loader.component';
+@import './styles/app/shared/components/error-message/error-message.component';
+@import './styles/app/feeds/feed/feed.component';
+@import './styles/app/feeds/item/item.component';
+@import './styles/app/item-details/item-details.component';
+@import './styles/app/item-details/comment/comment.component';
+@import './styles/app/user/user.component';
+
+html {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    margin: 0;
+    height: 100%;
+    width: 100%;
+}
+
+pre {
+    white-space: pre-wrap;
+}
+
+.app-loader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+@media screen and (max-width: 768px) {
+    .app-loader {
+        background-color: #fff;
+    }
+}
+
+app-root:empty + .app-loader {
+    opacity: 1;
+    z-index: 100;
+}
+app-root:empty + .app-loader .logo {
+    width: 20vh;
+}
