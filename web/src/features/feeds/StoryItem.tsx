@@ -4,10 +4,14 @@ import { hasHttpUrl } from '../../lib/url';
 import { useSettingsStore } from '../../store/settings';
 import { Story } from '../../types/models';
 
+const legacySpace = ' ';
+const legacyDoubleSpace = '  ';
+
 interface StoryItemProps {
     item: Story;
 }
 
+// These separators are byte-exact with the legacy Angular textContent diff on frozen fixtures; see PATTERN.md and do not tidy them.
 export function StoryItem({ item }: StoryItemProps) {
     const openLinkInNewTab = useSettingsStore((state) => state.openLinkInNewTab);
     const titleFontSize = useSettingsStore((state) => state.titleFontSize);
@@ -22,7 +26,7 @@ export function StoryItem({ item }: StoryItemProps) {
     return (
         <div className="item-block">
             <div style={{ marginBottom: `${listSpacing}px` }}>
-                {' '}
+                {legacySpace}
                 {external ? (
                     <p>
                         <a
@@ -36,7 +40,7 @@ export function StoryItem({ item }: StoryItemProps) {
                         </a>
                         {item.domain && (
                             <>
-                                {' '}
+                                {legacySpace}
                                 <span className="domain">({item.domain})</span>
                             </>
                         )}
@@ -45,7 +49,8 @@ export function StoryItem({ item }: StoryItemProps) {
                     <p>
                         <Link className="title" style={titleStyle} to={itemPath}>
                             {item.title}
-                        </Link>{' '}
+                        </Link>
+                        {legacySpace}
                     </p>
                 )}
                 <div className="subtext-palm">
@@ -57,36 +62,39 @@ export function StoryItem({ item }: StoryItemProps) {
                             <span className="right">{item.points} ★</span>
                         </div>
                     )}
-                    {!isJob && ' '}
+                    {legacySpace}
                     <div className="details">
-                        {isJob && ' '}
                         {item.time_ago}
-                        {!isJob ? '  ' : ' '}
+                        {!isJob ? legacyDoubleSpace : legacySpace}
                         {!isJob && (
                             <Link className="comment-number" to={itemPath}>
-                                • {label}{' '}
+                                • {label}
+                                {legacySpace}
                             </Link>
                         )}
                     </div>
                 </div>
                 <div className="subtext-laptop">
-                    {' '}
+                    {legacySpace}
                     {!isJob && (
                         <span>
                             {item.points} points by <Link to={userPath}>{item.user}</Link>
                         </span>
                     )}
-                    {!isJob && ' '}
+                    {!isJob && legacySpace}
                     <span className={isJob ? undefined : 'item-details'}>
                         {item.time_ago}
                         {!isJob && (
                             <>
-                                {'  '}|{'  '}
-                                <Link to={itemPath}>{label} </Link>
+                                {legacyDoubleSpace}|{legacyDoubleSpace}
+                                <Link to={itemPath}>
+                                    {label}
+                                    {legacySpace}
+                                </Link>
                             </>
                         )}
                     </span>
-                    {isJob && ' '}
+                    {isJob && legacySpace}
                 </div>
             </div>
         </div>

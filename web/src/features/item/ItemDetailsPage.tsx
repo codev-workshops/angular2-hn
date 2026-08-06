@@ -10,6 +10,9 @@ import { useSettingsStore } from '../../store/settings';
 import { Comment, PollResult, Story } from '../../types/models';
 import { CommentNode } from './CommentNode';
 
+const legacySpace = ' ';
+const legacyDoubleSpace = '  ';
+
 function isHttpUrl(url: unknown): url is string {
     return typeof url === 'string' && hasHttpUrl(url);
 }
@@ -33,17 +36,18 @@ function TitleLink({ item, openLinkInNewTab }: { item: Story; openLinkInNewTab: 
 function ItemSubtext({ item }: { item: Story }) {
     return (
         <div className="subtext">
-            {' '}
+            {legacySpace}
             {item.type !== 'job' && (
                 <span>
                     {item.points} points by <Link to={`/user/${item.user ?? ''}`}>{item.user}</Link>
                 </span>
-            )}{' '}
+            )}
+            {legacySpace}
             <span className={item.type !== 'job' ? 'item-details' : undefined}>
                 {item.time_ago}
                 {item.type !== 'job' && (
                     <span>
-                        {'  |  '}
+                        {legacyDoubleSpace}|{legacyDoubleSpace}
                         <Link to={`/item/${item.id ?? ''}`}>{commentLabel(item.comments_count ?? 0)} </Link>
                     </span>
                 )}
@@ -62,6 +66,7 @@ function PollResultView({ result, votes }: { result: PollResult; votes: number }
     );
 }
 
+// These separators are byte-exact with the legacy Angular textContent diff on frozen fixtures; see PATTERN.md and do not tidy.
 export function ItemDetailsPage() {
     const { id } = useParams();
     const navigate = useNavigate();
@@ -105,8 +110,10 @@ export function ItemDetailsPage() {
                 <div className="item">
                     <div className="mobile item-header">
                         <p className="title-block">
-                            <span className="back-button" onClick={() => navigate(-1)} />{' '}
-                            <TitleLink item={item} openLinkInNewTab={openLinkInNewTab} />{' '}
+                            <span className="back-button" onClick={() => navigate(-1)} />
+                            {legacySpace}
+                            <TitleLink item={item} openLinkInNewTab={openLinkInNewTab} />
+                            {legacySpace}
                         </p>
                     </div>
                     <div
@@ -114,13 +121,13 @@ export function ItemDetailsPage() {
                             item.text ? ' head-margin' : ''
                         }`}
                     >
-                        {' '}
+                        {legacySpace}
                         {isHttpUrl(item.url) ? (
                             <p>
                                 <TitleLink item={item} openLinkInNewTab={openLinkInNewTab} />
                                 {item.domain && (
                                     <>
-                                        {' '}
+                                        {legacySpace}
                                         <span className="domain">({item.domain})</span>
                                     </>
                                 )}
@@ -128,6 +135,7 @@ export function ItemDetailsPage() {
                         ) : (
                             <p>
                                 <TitleLink item={item} openLinkInNewTab={openLinkInNewTab} />
+                                {legacySpace}
                             </p>
                         )}
                         <ItemSubtext item={item} />

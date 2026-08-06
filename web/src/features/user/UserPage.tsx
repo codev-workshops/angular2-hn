@@ -6,6 +6,9 @@ import { fetchUser } from '../../lib/api';
 import { sanitizeHtml } from '../../lib/html';
 import { User } from '../../types/models';
 
+const legacySpace = ' ';
+
+// These separators are byte-exact with the legacy Angular textContent diff on frozen fixtures; see PATTERN.md and do not tidy.
 export function UserPage() {
     const { id: userID } = useParams();
     const navigate = useNavigate();
@@ -50,7 +53,10 @@ export function UserPage() {
         <div className="profile">
             <div className="mobile item-header">
                 <p className="title-block">
-                    <span className="back-button" onClick={() => navigate(-1)} /> Profile: {profile.id}{' '}
+                    <span className="back-button" onClick={() => navigate(-1)} />
+                    {legacySpace}
+                    Profile: {profile.id}
+                    {legacySpace}
                 </p>
             </div>
             <div className="main-details">
