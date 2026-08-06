@@ -34,7 +34,7 @@ export class FeedComponent implements OnInit {
       });
 
     this.pageSub = this.route.params.subscribe(params => {
-      this.pageNum = params['page'] ? +params['page'] : 1;
+      this.pageNum = params.page ? +params.page : 1;
       this._hackerNewsAPIService.fetchFeed(this.feedType, this.pageNum)
         .subscribe(
           items => this.items = items,

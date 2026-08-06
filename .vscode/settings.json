@@ -1,0 +1,7 @@
+{
+  "sonarlint.analyzerProperties": {
+    "sonar.typescript.tsconfigPath": "tsconfig.json"
+  },
+  "sonarlint.pathToNodeExecutable": "",
+  "sonarlint.testFilePattern": "**/*.spec.ts"
+}

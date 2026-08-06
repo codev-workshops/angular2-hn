@@ -1,5 +1,5 @@
 {
-  "extends": "tslint:recommended",
+  "extends": ["tslint:recommended", "tslint-sonarts"],
   "rules": {
     "array-type": false,
     "arrow-parens": false,
@@ -84,6 +84,13 @@
     "template-banana-in-box": true,
     "template-no-negated-async": true,
     "use-lifecycle-interface": true,
+    "variable-name": [
+      true,
+      "ban-keywords",
+      "check-format",
+      "allow-leading-underscore",
+      "allow-snake-case"
+    ],
     "use-pipe-transform-interface": true
   },
   "rulesDirectory": [
