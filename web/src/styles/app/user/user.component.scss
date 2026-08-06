@@ -1,7 +1,7 @@
 @import '../shared/scss/media';
 @import '../shared/scss/theme_variables';
 
-:host >>> pre {
+.profile pre {
     white-space: pre-wrap;
 }
 
@@ -13,7 +13,7 @@
     .profile {
         padding: 110px 15px 0 15px;
     }
-    .title-block {
+    .profile .title-block {
         font-size: 15px;
         text-align: center;
         text-overflow: ellipsis;
@@ -21,7 +21,7 @@
         overflow: hidden;
         margin: 0 75px;
     }
-    .back-button {
+    .profile .back-button {
         position: absolute;
         top: 52%;
         width: 0.6rem;
@@ -32,7 +32,7 @@
         left: 4%;
         transform: translate3d(0, -50%, 0) rotate(-135deg);
     }
-    .item-header {
+    .profile .item-header {
         padding-bottom: 10px;
         background-color: #fff;
         padding: 10px 0 10px 0;
@@ -45,7 +45,7 @@
 }
 
 @media #{$laptop-only} {
-    .mobile {
+    .profile .mobile {
         display: none;
     }
 }

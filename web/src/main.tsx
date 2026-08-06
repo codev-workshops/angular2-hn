@@ -30,8 +30,11 @@ function Header() {
 }
 
 function Shell() {
+    const storedTheme = window.localStorage.getItem('theme');
+    const theme = storedTheme ?? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'night' : 'default');
+
     return (
-        <div className="default">
+        <div className={theme}>
             <div className="body-cover" />
             <div className="wrapper">
                 <Header />

@@ -35,7 +35,7 @@
     margin-bottom: 15px;
 }
 
-p {
+.item p {
     margin: 2px 0;
 }
 
@@ -44,29 +44,29 @@ p {
     margin-top: 20px;
 }
 
-a {
+.item a {
     cursor: pointer;
     text-decoration: none;
 }
 
 @media #{$mobile-only} {
-    .laptop {
+    .item .laptop {
         display: none;
     }
 }
 
 @media #{$laptop-only} {
-    .mobile {
+    .item .mobile {
         display: none;
     }
 }
 
-.title {
+.item .title {
     font-size: 16px;
     font-family: Verdana, Geneva, sans-serif;
 }
 
-.title-block {
+.item .title-block {
     text-align: center;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -75,10 +75,10 @@ a {
 }
 
 @media #{$mobile-only} {
-    .title {
+    .item .title {
         font-size: 15px;
     }
-    .back-button {
+    .item .back-button {
         position: absolute;
         top: 52%;
         width: 0.6rem;
@@ -91,32 +91,32 @@ a {
     }
 }
 
-.subtext {
+.item .subtext {
     font-size: 12px;
     font-weight: bold;
     letter-spacing: 0.5px;
 }
 
-.domain {
+.item .domain {
     letter-spacing: 0.5px;
 }
 
-.subtext a {
+.item .subtext a {
     &:hover {
         text-decoration: underline;
     }
 }
 
-.item-details {
+.item .item-details {
     padding: 10px;
 }
 
-.item-header {
+.item .item-header {
     padding-bottom: 10px;
 }
 
 @media #{$mobile-only} {
-    .item-header {
+    .item .item-header {
         padding: 10px 0 10px 0;
         position: fixed;
         width: 100%;
@@ -125,11 +125,11 @@ a {
     }
 }
 
-.pollResults {
+.item .pollResults {
     margin-bottom: 1em;
 }
 
-.pollContent {
+.item .pollContent {
     * {
         padding-bottom: 0;
         margin-bottom: -1em;
@@ -141,11 +141,11 @@ a {
     }
 }
 
-ul {
+.item ul {
     list-style-type: none;
     padding: 10px 0;
 }
 
-li {
+.item li {
     display: list-item;
 }

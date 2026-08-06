@@ -7,7 +7,8 @@ describe('http', () => {
     });
 
     it('parses JSON and rejects non-JSON response bodies', () => {
-        const transform = http.defaults.transformResponse?.[0] as (data: string) => unknown;
+        const transforms = http.defaults.transformResponse;
+        const transform = (Array.isArray(transforms) ? transforms[0] : transforms) as (data: string) => unknown;
         expect(transform('{"ok":true}')).toEqual({ ok: true });
         expect(() => transform('<html>offline</html>')).toThrow();
     });

@@ -1,4 +1,15 @@
 @import './styles/app/shared/scss/themes';
+@import './styles/app/app.component';
+@import './styles/app/core/header/header.component';
+@import './styles/app/core/settings/settings.component';
+@import './styles/app/core/footer/footer.component';
+@import './styles/app/shared/components/loader/loader.component';
+@import './styles/app/shared/components/error-message/error-message.component';
+@import './styles/app/feeds/feed/feed.component';
+@import './styles/app/feeds/item/item.component';
+@import './styles/app/item-details/item-details.component';
+@import './styles/app/item-details/comment/comment.component';
+@import './styles/app/user/user.component';
 
 html {
     height: 100%;

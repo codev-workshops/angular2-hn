@@ -2,6 +2,12 @@ import eslint from '@eslint/js';
 import tsParser from '@typescript-eslint/parser';
 import tsPlugin from '@typescript-eslint/eslint-plugin';
 import reactHooks from 'eslint-plugin-react-hooks';
+import ts from 'typescript-modern';
+import path from 'path';
+
+const configFile = ts.readConfigFile('web/tsconfig.json', ts.sys.readFile);
+const parsedConfig = ts.parseJsonConfigFileContent(configFile.config, ts.sys, path.resolve(process.cwd(), 'web'));
+const typeProgram = ts.createProgram(parsedConfig.fileNames, parsedConfig.options);
 
 export default [
     {
@@ -14,6 +20,7 @@ export default [
             parser: tsParser,
             parserOptions: {
                 ecmaFeatures: { jsx: true },
+                programs: [typeProgram],
             },
             globals: {
                 document: 'readonly',
@@ -31,12 +38,13 @@ export default [
         },
     },
     {
-        files: ['scripts/**/*.js'],
+        files: ['scripts/**/*.{js,cjs}'],
         languageOptions: {
             globals: {
                 __dirname: 'readonly',
                 process: 'readonly',
                 require: 'readonly',
+                console: 'readonly',
             },
         },
         plugins: {

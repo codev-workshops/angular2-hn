@@ -1,8 +1,8 @@
 {
     "compilerOptions": {
-        "target": "ES2020",
+        "target": "ES2022",
         "useDefineForClassFields": true,
-        "lib": ["ES2020", "DOM", "DOM.Iterable"],
+        "lib": ["ES2022", "DOM", "DOM.Iterable"],
         "allowJs": false,
         "skipLibCheck": true,
         "esModuleInterop": true,
@@ -10,19 +10,11 @@
         "strict": true,
         "forceConsistentCasingInFileNames": true,
         "module": "ESNext",
-        "moduleResolution": "node",
-        "baseUrl": ".",
-        "paths": {
-            "axios": ["src/types/axios-shim.d.ts"],
-            "dompurify": ["src/types/dompurify-shim.d.ts"],
-            "react-router": ["src/types/react-router-shim.d.ts"]
-        },
+        "moduleResolution": "Bundler",
         "resolveJsonModule": true,
         "isolatedModules": true,
         "noEmit": true,
-        "jsx": "react",
-        "types": []
+        "jsx": "react-jsx"
     },
-    "include": ["src"],
-    "exclude": ["src/**/*.test.ts", "src/**/*.test.tsx", "src/test-setup.ts"]
+    "include": ["src"]
 }
