@@ -18,6 +18,7 @@
 
 ## Gotchas
 
+- Angular templates preserve inter-element whitespace, while JSX collapses whitespace across newlines; compare rendered `textContent` and use explicit `{' '}` separators when porting templates.
 - Use route-level `lazy` in the data router, never bare `React.lazy`: React.lazy commits the URL before
   the chunk mounts, while the frozen specs assert immediately after navigation.
 - React unmounts the whole tree on a render error where Angular silently ignored a bad response shape.

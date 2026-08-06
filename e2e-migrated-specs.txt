@@ -1,2 +1,7 @@
 # One frozen Playwright spec filename per line.
 app-shell.spec.ts
+feeds.spec.ts
+item.spec.ts
+user.spec.ts
+settings.spec.ts
+states.spec.ts
