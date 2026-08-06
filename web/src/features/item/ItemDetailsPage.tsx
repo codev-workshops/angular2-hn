@@ -127,7 +127,7 @@ export function ItemDetailsPage() {
                             </p>
                         ) : (
                             <p>
-                                <TitleLink item={item} openLinkInNewTab={openLinkInNewTab} />
+                                <TitleLink item={item} openLinkInNewTab={openLinkInNewTab} />{' '}
                             </p>
                         )}
                         <ItemSubtext item={item} />
