@@ -23,4 +23,15 @@ export class ItemComponent implements OnInit {
     return this.item.url.indexOf('http') === 0;
   }
 
+  /** Domain of the story's external link, without any `www.` prefix. */
+  get domain(): string {
+    const domain = this.item.domain || this.extractDomain(this.item.url);
+    return domain.replace(/^www\./, '');
+  }
+
+  private extractDomain(url: string): string {
+    const match = /^https?:\/\/([^\/?#]+)/.exec(url || '');
+    return match ? match[1] : '';
+  }
+
 }
