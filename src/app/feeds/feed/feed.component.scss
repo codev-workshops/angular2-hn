@@ -72,28 +72,35 @@ ol {
   a {
     @media #{$mobile-only} {
       text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+      min-width: 88px;
+      min-height: 48px;
+      padding: 12px 16px;
     }
   }
 
   @media #{$mobile-only} {
     margin: 20px 0;
     text-align: center;
-    padding: 10px 80px;
-    height: 20px;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
   }
 
   .prev {
     padding-right: 20px;
 
     @media #{$mobile-only} {
-      float: left;
-      padding-right: 0;
+      padding-right: 16px;
     }
   }
 
   .more {
     @media #{$mobile-only} {
-      float: right;
+      margin-left: auto;
     }
   }
 }
