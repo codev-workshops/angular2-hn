@@ -59,6 +59,21 @@ ol {
   }
 }
 
+.post.selected {
+  background-color: rgba($theme-day-secondary-color, .1);
+  box-shadow: inset 3px 0 0 $theme-day-secondary-color;
+}
+
+:host-context(.night) .post.selected {
+  background-color: rgba($theme-night-secondary-color, .12);
+  box-shadow: inset 3px 0 0 $theme-night-secondary-color;
+}
+
+:host-context(.amoledblack) .post.selected {
+  background-color: rgba(255, 255, 255, .12);
+  box-shadow: inset 3px 0 0 $theme-amoledblack-secondary-color;
+}
+
 .item-block {
   display: block;
 }
