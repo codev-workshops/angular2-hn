@@ -58,6 +58,16 @@ p {
     }
   }
 
+  .comment-badge {
+    display: inline-block;
+    padding: 0 6px;
+    border: 1px solid currentColor;
+    border-radius: 10px;
+    font-size: 11px;
+    line-height: 16px;
+    white-space: nowrap;
+  }
+
   .domain {
     color: #696969;
     letter-spacing: 0.5px;
