@@ -16,7 +16,7 @@
       <span class="right">{{item.points}} ★</span>
     </div>
     <div class="details">
-    {{ item.time_ago }}
+    {{ item.time | timeAgo }}
     <a [routerLink]="['/item', item.id]" routerLinkActive="active" class="comment-number" *ngIf="item.type !== 'job'"> •
       {{item.comments_count | comment }}
     </a>
@@ -28,7 +28,7 @@
       <a [routerLink]="['/user', item.user]" routerLinkActive="active">{{item.user}}</a>
     </span>
     <span [class.item-details]="item.type !== 'job'">
-      {{ item.time_ago }}
+      {{ item.time | timeAgo }}
       <span *ngIf="item.type !== 'job'"> |
         <a [routerLink]="['/item', item.id]" routerLinkActive="active">
           {{item.comments_count | comment }}
