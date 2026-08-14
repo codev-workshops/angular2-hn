@@ -27,7 +27,7 @@
 @media #{$mobile-only} {
   .item {
     box-sizing: border-box;
-    padding: 110px 15px 0 15px;
+    padding: ($header-height-mobile + 54px) 15px 0 15px;
   }
 }
 
@@ -121,7 +121,7 @@ a {
     position: fixed;
     width: 100%;
     left: 0;
-    top: 62px;
+    top: $header-height-mobile + 6px;
   }
 }
 

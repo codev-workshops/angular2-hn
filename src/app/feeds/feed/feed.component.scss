@@ -29,7 +29,7 @@ ol {
 
 .list-margin {
   @media #{$mobile-only} {
-    margin-top: 55px;
+    margin-top: $header-height-mobile + 5px;
   }
 }
 
@@ -103,6 +103,6 @@ ol {
   padding: 0 40px 10px;
 
   @media #{$mobile-only} {
-    padding: 60px 15px 25px 15px;
+    padding: ($header-height-mobile + 4px) 15px 25px 15px;
   }
 }

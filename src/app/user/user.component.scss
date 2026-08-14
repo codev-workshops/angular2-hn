@@ -11,7 +11,7 @@
 
 @media #{$mobile-only} {
   .profile {
-    padding: 110px 15px 0 15px;
+    padding: ($header-height-mobile + 54px) 15px 0 15px;
   }
   .title-block {
     font-size: 15px;
@@ -39,7 +39,7 @@
     position: fixed;
     width: 100%;
     left: 0;
-    top: 62px;
+    top: $header-height-mobile + 6px;
     height: 20px;
   }
 }
