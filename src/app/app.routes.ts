@@ -15,6 +15,11 @@ const routes: Routes = [
     data: {feedType: 'news'}
   },
   {
+    path: 'best',
+    children: feedRoutes,
+    data: {feedType: 'best'}
+  },
+  {
     path: 'newest',
     children: feedRoutes,
     data: {feedType: 'newest'}
