@@ -72,14 +72,21 @@ ol {
   a {
     @media #{$mobile-only} {
       text-decoration: none;
+      display: inline-block;
+      box-sizing: border-box;
+      min-width: 88px;
+      min-height: 44px;
+      line-height: 44px;
+      padding: 0 16px;
+      text-align: center;
     }
   }
 
   @media #{$mobile-only} {
     margin: 20px 0;
     text-align: center;
-    padding: 10px 80px;
-    height: 20px;
+    padding: 10px;
+    overflow: hidden;
   }
 
   .prev {
@@ -87,7 +94,7 @@ ol {
 
     @media #{$mobile-only} {
       float: left;
-      padding-right: 0;
+      padding-right: 16px;
     }
   }
 
