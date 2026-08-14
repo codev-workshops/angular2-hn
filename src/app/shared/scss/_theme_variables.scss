@@ -1,4 +1,6 @@
 $skull-size: 200px;
+$tap-target-min: 44px;   // WCAG 2.5.5 / iOS HIG minimum
+$header-height-mobile: $tap-target-min + 12px;
 
 // -------------------------------------------------------------------------------------------
 // Theme Engine

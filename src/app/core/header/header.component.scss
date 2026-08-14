@@ -11,13 +11,19 @@
   width: 100%;
 
   @media #{$mobile-only} {
-    height: 50px;
+    height: $header-height-mobile;
     position: fixed;
     top: 0;
   }
 
   a {
     display: inline;
+  }
+
+  @media #{$mobile-only} {
+    .header-nav a {
+      display: inline-block;
+    }
   }
 }
 
@@ -37,7 +43,7 @@
 
   @media #{$mobile-only} {
     left: 16px;
-    top: 12px;
+    top: 15px;
   }
 }
 
@@ -82,7 +88,8 @@ h1 {
   z-index: -1;
 
   @media #{$mobile-only} {
-    top: 22px;
+    top: ($header-height-mobile - $tap-target-min) / 2;
+    height: $tap-target-min;
   }
 }
 
@@ -114,6 +121,17 @@ h1 {
     &:hover {
       color: #fff;
     }
+
+    @media #{$mobile-only} {
+      box-sizing: border-box;
+      min-width: $tap-target-min;
+      min-height: $tap-target-min;
+      line-height: $tap-target-min;
+      padding: 0 4px;
+      margin: 0;
+      text-align: center;
+      vertical-align: middle;
+    }
   }
 
   .active {
@@ -143,7 +161,7 @@ h1 {
     }
 
     @media #{$mobile-only} {
-      margin-top: 15px;
+      margin-top: ($header-height-mobile - 25px) / 2;
     }
   }
 }
