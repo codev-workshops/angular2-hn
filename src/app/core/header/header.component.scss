@@ -19,6 +19,18 @@
   a {
     display: inline;
   }
+
+  @media #{$mobile-only} {
+    .header-nav a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 44px;
+      min-height: 44px;
+      margin: 0;
+      padding: 0 4px;
+    }
+  }
 }
 
 .home-link {
@@ -82,7 +94,8 @@ h1 {
   z-index: -1;
 
   @media #{$mobile-only} {
-    top: 22px;
+    top: 3px;
+    height: 44px;
   }
 }
 
@@ -102,7 +115,10 @@ h1 {
   margin-left: 20px;
 
   @media #{$mobile-only} {
-    margin-left: 60px;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    margin-left: 55px;
   }
 
   a {
@@ -118,6 +134,12 @@ h1 {
 
   .active {
     color: #fff;
+  }
+
+  .separator {
+    @media #{$mobile-only} {
+      display: none;
+    }
   }
 }
 
