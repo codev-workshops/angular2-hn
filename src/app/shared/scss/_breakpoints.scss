@@ -1,0 +1,24 @@
+// -------------------------------------------------------------------------------------------
+// Breakpoints
+// -------------------------------------------------------------------------------------------
+//
+// Stable, documented names for the media query strings that already exist in `_media.scss`.
+// The values are re-exported unchanged, so `@media #{$breakpoint-mobile}` renders exactly the
+// same CSS as today's `@media #{$mobile-only}`.
+//
+// 768px, 769px and 1024px are the ONLY sanctioned breakpoints in this codebase. Two places
+// currently sit outside that set and are to be migrated in later PRs:
+//   * `src/app/core/settings/settings.component.scss` — `@media screen and (max-width: 700px)`
+//   * `src/styles.scss` — raw `@media screen and (max-width: 768px)` literal
+// Do not add new breakpoint values; use the names below.
+
+@import "media";
+
+// Phones: up to and including 768px.
+$breakpoint-mobile: $mobile-only;   // "only screen and (max-width : 768px)"
+
+// Laptop and up: 769px and wider. Complement of `$breakpoint-mobile`.
+$breakpoint-laptop: $laptop-only;   // "only screen and (min-width : 769px)"
+
+// Tablet and below: up to and including 1024px. Wider than `$breakpoint-mobile`.
+$breakpoint-tablet: $tablet-only;   // "only screen and (max-width : 1024px)"

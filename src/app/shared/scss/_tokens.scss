@@ -1,0 +1,97 @@
+// -------------------------------------------------------------------------------------------
+// Design tokens
+// -------------------------------------------------------------------------------------------
+//
+// Single source of truth for spacing, type, font families, line heights, letter spacing,
+// border widths and semantic color aliases.
+//
+// Every value below is taken verbatim from the values that already exist in the component
+// SCSS files, so adopting a token is always a no-op for rendered output. Nothing in this
+// file emits CSS: it only declares variables.
+//
+// Colors intentionally alias the existing theme variables in `_theme_variables.scss` rather
+// than redefining them, so the day / night / amoledblack theme engine stays authoritative.
+//
+// See `src/app/shared/scss/README.md` for usage and `docs/component-specs.md` for the
+// per-component mapping of hardcoded values onto these tokens.
+
+@import "theme_variables";
+
+// -------------------------------------------------------------------------------------------
+// Spacing scale
+// -------------------------------------------------------------------------------------------
+// Derived from the recurring magic numbers across component SCSS: 2, 4, 5, 8, 10, 20, 40px.
+
+$space-0: 2px;
+$space-1: 4px;
+$space-2: 5px;
+$space-3: 8px;
+$space-4: 10px;
+$space-5: 20px;
+$space-6: 40px;
+
+// -------------------------------------------------------------------------------------------
+// Type scale
+// -------------------------------------------------------------------------------------------
+// Derived from the existing font sizes: 12, 13, 15, 16, 17, 18, 32px.
+
+$font-size-xs: 12px;   // .subtext, .subtext-laptop, .deleted-meta
+$font-size-sm: 13px;   // .subtext-palm, .meta, .collapse
+$font-size-md: 15px;   // .wrapper base size, .comment-text, .job-header
+$font-size-lg: 16px;   // h1, .left, .title
+$font-size-xl: 17px;   // feed .nav
+$font-size-xxl: 18px;  // mobile .main-details .name / .right
+$font-size-display: 32px; // .main-details .name / .right on laptop
+
+// -------------------------------------------------------------------------------------------
+// Font families
+// -------------------------------------------------------------------------------------------
+
+// Base UI stack, currently declared in `src/app/app.component.scss` on `.wrapper`.
+$font-family-base: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+
+// Alternate stack used for item / story titles in `feeds/item` and `item-details`.
+$font-family-alt: Verdana, Geneva, sans-serif;
+
+// -------------------------------------------------------------------------------------------
+// Line heights
+// -------------------------------------------------------------------------------------------
+
+$line-height-base: 1.3;  // `.wrapper` in app.component.scss
+
+// -------------------------------------------------------------------------------------------
+// Letter spacing
+// -------------------------------------------------------------------------------------------
+
+$letter-spacing-tight: 0.5px; // subtext / meta / domain
+$letter-spacing-wide: 1.8px;  // header nav links
+$letter-spacing-wider: 2px;   // comment `.collapse`, user `.name` / `.right`
+
+// -------------------------------------------------------------------------------------------
+// Border widths
+// -------------------------------------------------------------------------------------------
+
+$border-width-hairline: 1px; // list separators, settings control sections
+$border-width-thick: 2px;    // theme borders (`$theme-day-border`, `$theme-night-border`)
+
+// -------------------------------------------------------------------------------------------
+// Semantic color aliases
+// -------------------------------------------------------------------------------------------
+// These map onto the existing theme variables so no color shifts when components adopt them.
+// Only `$color-hairline` introduces a name for a literal that has no theme variable yet
+// (the #CECECB list separator in `feeds/feed`); its value is unchanged.
+
+$color-page-background: $theme-day-body-background-color;      // #fff
+$color-surface: $theme-day-wrapper-background-color;           // #f5f5f5
+$color-surface-mobile: $theme-day-wrapper-mobile-background-color; // #fff
+$color-text: $theme-day-text-color;                            // #000
+$color-subtext: $theme-day-subtext-color;                      // #696969
+$color-accent: $theme-day-secondary-color;                     // #b92b27
+$color-header-background: $theme-day-header-background-color;
+$color-logo-inner: $theme-day-logo-inner;                      // #fff
+
+$color-on-accent: #fff;                        // text on the header / popup surfaces
+$color-on-accent-muted: hsla(0, 0%, 100%, .9); // header nav links
+$color-hairline: #CECECB;                      // post separator in feeds/feed
+$color-overlay: rgba(0, 0, 0, 0.7);            // settings overlay scrim
+$color-on-overlay-muted: rgba(255, 255, 255, 0.8); // settings close button
