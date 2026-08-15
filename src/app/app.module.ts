@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { FeedComponent } from './feeds/feed/feed.component';
 import { ItemComponent } from './feeds/item/item.component';
+import { StoryListComponent } from './feeds/story-list/story-list.component';
 import { SharedComponentsModule } from './shared/components/shared-components.module';
 import { PipesModule } from './shared/pipes/pipes.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -15,7 +16,7 @@ import { HackerNewsAPIService } from './shared/services/hackernews-api.service';
 import { SettingsService } from './shared/services/settings.service';
 
 @NgModule({
-    declarations: [AppComponent, FeedComponent, ItemComponent],
+    declarations: [AppComponent, FeedComponent, ItemComponent, StoryListComponent],
     imports: [
         BrowserModule,
         routing,

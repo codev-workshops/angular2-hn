@@ -108,6 +108,28 @@
         }
       }
 
+      .author-filter {
+        color: $subtext-color;
+
+        input {
+          background: $wrapper-background-color;
+          color: $wrapper-color;
+          border: 1px solid $subtext-color;
+
+          @media #{$mobile-only} {
+            background: $wrapper-mobile-background-color;
+          }
+        }
+
+        .clear {
+          color: $secondary-link-color;
+        }
+      }
+
+      .no-matches {
+        color: $subtext-color;
+      }
+
       .job-header {
         @media #{$mobile-only} {
           border-bottom: $border;
