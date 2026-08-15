@@ -9,5 +9,4 @@ import { RankedStory } from '../../shared/models/ranked-story';
 })
 export class StoryListComponent {
   @Input() items: RankedStory[] = [];
-  @Input() listMargin = false;
 }

@@ -13,8 +13,7 @@
         (input)="onAuthorFilterChange($event.target.value)">
       <button class="clear" type="button" *ngIf="authorFilter" (click)="onAuthorFilterChange('')">clear</button>
     </div>
-    <app-story-list *ngIf="feedType !== 'new'" [items]="filteredItems"
-      [listMargin]="feedType !== 'jobs' && !canFilterByAuthor"></app-story-list>
+    <app-story-list *ngIf="feedType !== 'new'" [items]="filteredItems"></app-story-list>
     <p class="no-matches" *ngIf="items.length > 0 && filteredItems.length === 0">
       No stories by “{{ authorFilter }}” on this page.
     </p>

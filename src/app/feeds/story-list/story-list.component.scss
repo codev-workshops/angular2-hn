@@ -18,12 +18,6 @@ ol {
   }
 }
 
-.list-margin {
-  @media #{$mobile-only} {
-    margin-top: 55px;
-  }
-}
-
 .post {
   padding: 10px 0 10px 5px;
   transition: background-color 0.2s ease;
