@@ -60,6 +60,18 @@ describe('FeedComponent', () => {
     expect(component.filteredItems.length).toBe(3);
   });
 
+  it('ignores an author param on feeds without authors', () => {
+    const jobsRoute = { data: of({ feedType: 'jobs' }), params, queryParams } as unknown as ActivatedRoute;
+    const api = { fetchFeed: (): Observable<Story[]> => of(stories) } as unknown as HackerNewsAPIService;
+    const jobs = new FeedComponent(api, jobsRoute, router as unknown as Router);
+    jobs.ngOnInit();
+
+    queryParams.next({ author: 'nobody' });
+
+    expect(jobs.filteredItems.length).toBe(3);
+    expect(jobs.filterQueryParams).toEqual({});
+  });
+
   it('stops reacting to route changes once destroyed', () => {
     component.ngOnDestroy();
     queryParams.next({ author: 'bob' });

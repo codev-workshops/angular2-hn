@@ -91,7 +91,7 @@ export class FeedComponent implements OnInit, OnDestroy {
 
   private setAuthorFilter(author: string) {
     this.authorFilter = author;
-    this.filterQueryParams = author ? { author } : {};
+    this.filterQueryParams = author && this.canFilterByAuthor ? { author } : {};
     this.applyAuthorFilter();
   }
 
@@ -101,7 +101,7 @@ export class FeedComponent implements OnInit, OnDestroy {
       return;
     }
 
-    const author = this.authorFilter.trim().toLowerCase();
+    const author = this.canFilterByAuthor ? this.authorFilter.trim().toLowerCase() : '';
     const ranked = this.items.map((story, index) => ({ story, rank: this.listStart + index }));
 
     if (!author) {
