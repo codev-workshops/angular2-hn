@@ -19,12 +19,35 @@ export class FeedComponent implements OnInit {
   feedType: string;
   pageNum: number;
   listStart: number;
+  authorFilter = '';
   errorMessage = '';
 
   constructor(
     private _hackerNewsAPIService: HackerNewsAPIService,
     private route: ActivatedRoute
   ) { }
+
+  get visibleItems(): Story[] {
+    const author = this.authorFilter.trim().toLowerCase();
+
+    if (!author || !this.items) {
+      return this.items;
+    }
+
+    return this.items.filter(item => item.user && item.user.toLowerCase().indexOf(author) !== -1);
+  }
+
+  get showAuthorFilter(): boolean {
+    return this.feedType !== 'jobs' && !!this.items && this.items.length > 0;
+  }
+
+  get listMargin(): boolean {
+    return this.feedType !== 'jobs' && !this.showAuthorFilter;
+  }
+
+  clearAuthorFilter() {
+    this.authorFilter = '';
+  }
 
   ngOnInit() {
     this.typeSub = this.route

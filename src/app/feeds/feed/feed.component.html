@@ -7,11 +7,16 @@
       These are jobs at startups that were funded by Y Combinator.
       You can also get a job at a YC startup through <a href="https://triplebyte.com/?ref=yc_jobs">Triplebyte</a>.
     </p>
-    <ol *ngIf="feedType !== 'new'" [class.list-margin]="feedType !== 'jobs'" start="{{ listStart }}">
-      <li *ngFor="let item of items" class="post">
-        <item class="item-block" [item]="item"></item>
-      </li>
-    </ol>
+    <div class="author-filter" *ngIf="showAuthorFilter">
+      <input type="text" name="authorFilter" placeholder="Filter by author" aria-label="Filter by author"
+        [(ngModel)]="authorFilter">
+      <a class="clear" *ngIf="authorFilter" (click)="clearAuthorFilter()">Clear</a>
+    </div>
+    <app-story-list *ngIf="feedType !== 'new'" [items]="visibleItems" [listStart]="listStart"
+      [listMargin]="listMargin"></app-story-list>
+    <p class="no-matches" *ngIf="visibleItems.length === 0 && authorFilter">
+      No stories by an author matching “{{ authorFilter }}” on this page.
+    </p>
     <div class="nav">
       <a *ngIf="listStart !== 1" [routerLink]="['/' + feedType, pageNum - 1]" routerLinkActive="active" class="prev">
         ‹ Prev
