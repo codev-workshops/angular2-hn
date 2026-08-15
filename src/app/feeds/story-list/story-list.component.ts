@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import { Story } from '../../shared/models/story';
+import { RankedStory } from '../../shared/models/ranked-story';
 
 @Component({
   selector: 'app-story-list',
@@ -8,7 +8,6 @@ import { Story } from '../../shared/models/story';
   styleUrls: ['./story-list.component.scss']
 })
 export class StoryListComponent {
-  @Input() items: Story[] = [];
-  @Input() listStart = 1;
+  @Input() items: RankedStory[] = [];
   @Input() listMargin = false;
 }

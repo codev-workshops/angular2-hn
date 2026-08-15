@@ -1,5 +1,5 @@
-<ol [class.list-margin]="listMargin" start="{{ listStart }}">
-  <li *ngFor="let item of items" class="post">
-    <item class="item-block" [item]="item"></item>
+<ol [class.list-margin]="listMargin">
+  <li *ngFor="let entry of items" class="post" [attr.value]="entry.rank">
+    <item class="item-block" [item]="entry.story"></item>
   </li>
 </ol>

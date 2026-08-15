@@ -11,9 +11,9 @@
       <label for="author-filter">Author</label>
       <input id="author-filter" type="search" placeholder="filter by username" [value]="authorFilter"
         (input)="onAuthorFilterChange($event.target.value)">
-      <a class="clear" *ngIf="authorFilter" (click)="onAuthorFilterChange('')">clear</a>
+      <button class="clear" type="button" *ngIf="authorFilter" (click)="onAuthorFilterChange('')">clear</button>
     </div>
-    <app-story-list *ngIf="feedType !== 'new'" [items]="filteredItems" [listStart]="listStart"
+    <app-story-list *ngIf="feedType !== 'new'" [items]="filteredItems"
       [listMargin]="feedType !== 'jobs' && !canFilterByAuthor"></app-story-list>
     <p class="no-matches" *ngIf="items.length > 0 && filteredItems.length === 0">
       No stories by “{{ authorFilter }}” on this page.
