@@ -43,6 +43,18 @@ a {
     margin-left: 10px;
     font-size: 15px;
     cursor: pointer;
+    background: transparent;
+    border: 0;
+    padding: 6px 4px;
+    color: inherit;
+    font-weight: bold;
+    text-decoration: underline;
+  }
+
+  input:focus,
+  .clear:focus {
+    outline: 2px solid currentColor;
+    outline-offset: 1px;
   }
 }
 

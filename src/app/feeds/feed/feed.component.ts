@@ -28,13 +28,28 @@ export class FeedComponent implements OnInit {
   ) { }
 
   get visibleItems(): Story[] {
-    const author = this.authorFilter.trim().toLowerCase();
-
-    if (!author || !this.items) {
+    if (!this.items) {
       return this.items;
     }
 
-    return this.items.filter(item => item.user && item.user.toLowerCase().indexOf(author) !== -1);
+    return this.items.filter(item => this.matchesAuthorFilter(item));
+  }
+
+  get visibleRanks(): number[] {
+    if (!this.items) {
+      return [];
+    }
+
+    const start = this.listStart || 1;
+    const ranks: number[] = [];
+
+    this.items.forEach((item, index) => {
+      if (this.matchesAuthorFilter(item)) {
+        ranks.push(start + index);
+      }
+    });
+
+    return ranks;
   }
 
   get showAuthorFilter(): boolean {
@@ -47,6 +62,16 @@ export class FeedComponent implements OnInit {
 
   clearAuthorFilter() {
     this.authorFilter = '';
+  }
+
+  private matchesAuthorFilter(item: Story): boolean {
+    const author = this.authorFilter.trim().toLowerCase();
+
+    if (!author) {
+      return true;
+    }
+
+    return !!item.user && item.user.toLowerCase().indexOf(author) !== -1;
   }
 
   ngOnInit() {

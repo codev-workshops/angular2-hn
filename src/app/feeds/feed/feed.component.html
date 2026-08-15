@@ -10,9 +10,9 @@
     <div class="author-filter" *ngIf="showAuthorFilter">
       <input type="text" name="authorFilter" placeholder="Filter by author" aria-label="Filter by author"
         [(ngModel)]="authorFilter">
-      <a class="clear" *ngIf="authorFilter" (click)="clearAuthorFilter()">Clear</a>
+      <button type="button" class="clear" *ngIf="authorFilter" (click)="clearAuthorFilter()">Clear</button>
     </div>
-    <app-story-list *ngIf="feedType !== 'new'" [items]="visibleItems" [listStart]="listStart"
+    <app-story-list *ngIf="feedType !== 'new'" [items]="visibleItems" [ranks]="visibleRanks" [listStart]="listStart"
       [listMargin]="listMargin"></app-story-list>
     <p class="no-matches" *ngIf="visibleItems.length === 0 && authorFilter">
       No stories by an author matching “{{ authorFilter }}” on this page.

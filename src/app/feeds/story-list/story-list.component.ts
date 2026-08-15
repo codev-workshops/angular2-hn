@@ -10,5 +10,6 @@ import { Story } from '../../shared/models/story';
 export class StoryListComponent {
   @Input() items: Story[] = [];
   @Input() listStart = 1;
+  @Input() ranks: number[];
   @Input() listMargin = true;
 }
