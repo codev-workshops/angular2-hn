@@ -42,6 +42,10 @@ const focusedElement = (page) =>
               };
     });
 
+/** The recorded `ga` calls, without the snippet's own `create` call. */
+const pageViewCalls = async (page) =>
+    (await page.evaluate(() => window.gaCalls)).filter(([command]) => command !== 'create');
+
 const linkAttributes = (page, selector) =>
     page.$eval(selector, (element) => ({
         target: element.getAttribute('target'),
@@ -265,11 +269,17 @@ const flows = [
                 run: async (page) => {
                     await page.reload({ waitUntil: 'domcontentloaded' });
                     await settle(page);
-                    return {
+                    const state = {
                         titleStyle: await page.$eval('.item-block .title', (a) => a.getAttribute('style')),
                         itemStyle: await page.$eval('.item-block > div', (div) => div.getAttribute('style')),
                         title: await linkAttributes(page, '.item-block .title'),
                     };
+                    // Guard against the step passing because both apps came back
+                    // with the defaults instead of the values typed above.
+                    if (!state.titleStyle.includes('24px') || !state.itemStyle.includes('20px')) {
+                        throw new Error(`preferences did not survive the reload: ${JSON.stringify(state)}`);
+                    }
+                    return state;
                 },
             },
         ],
@@ -317,6 +327,32 @@ const flows = [
                     await page.keyboard.press('Tab');
                     await page.waitForTimeout(200);
                     return { focused: await focusedElement(page) };
+                },
+            },
+        ],
+    },
+    {
+        name: 'analytics',
+        start: { route: '/', viewport: desktop, storage: { theme: 'default' }, recordAnalytics: true },
+        steps: [
+            {
+                // Angular reports `NavigationEnd.urlAfterRedirects`, so `/` must not
+                // produce a page view of its own.
+                name: 'root-redirect-sends-one-pageview',
+                run: async (page) => {
+                    const calls = await pageViewCalls(page);
+                    if (JSON.stringify(calls) !== JSON.stringify([['set', 'page', '/news/1'], ['send', 'pageview']])) {
+                        throw new Error(`unexpected page views: ${JSON.stringify(calls)}`);
+                    }
+                    return { calls };
+                },
+            },
+            {
+                name: 'navigate-sends-one-more-pageview',
+                run: async (page) => {
+                    await page.click('.header-nav a:has-text("show")');
+                    await settle(page);
+                    return { calls: await pageViewCalls(page) };
                 },
             },
         ],

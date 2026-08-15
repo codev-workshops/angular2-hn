@@ -22,8 +22,9 @@ class SettingsService {
             showSettings: false,
             openLinkInNewTab: openLinkInNewTab ? (JSON.parse(openLinkInNewTab) as boolean) : false,
             theme: 'default',
-            titleFontSize: localStorage.getItem('titleFontSize') ?? '16',
-            listSpacing: localStorage.getItem('listSpacing') ?? '0',
+            // Angular checks truthiness, so a stored empty string falls back too.
+            titleFontSize: localStorage.getItem('titleFontSize') || '16',
+            listSpacing: localStorage.getItem('listSpacing') || '0',
         };
         this.subscribeToSystemPreferredColorScheme();
         this.initTheme();

@@ -27,7 +27,22 @@ export async function openApp(browser, baseUrl, testCase, fixtures) {
         await context.route('**/node-hnapi.herokuapp.com/**', () => {});
     }
     const page = await context.newPage();
+    if (testCase.recordAnalytics) {
+        // Both apps call the global `ga` from the snippet in `index.html`, which
+        // keeps an already defined `window.ga`, so this records their page views.
+        await page.addInitScript(() => {
+            window.gaCalls = [];
+            window.ga = (...args) => window.gaCalls.push(args);
+        });
+    }
+    // Init scripts re-run on every navigation, including `page.reload()`. Seeding
+    // must happen once only, otherwise a reload would silently reset the
+    // preferences a flow just changed.
     await page.addInitScript((storage) => {
+        if (sessionStorage.getItem('parity:seeded') !== null) {
+            return;
+        }
+        sessionStorage.setItem('parity:seeded', '1');
         localStorage.clear();
         for (const [key, value] of Object.entries(storage)) {
             localStorage.setItem(key, value);

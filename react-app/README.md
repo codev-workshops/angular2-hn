@@ -92,10 +92,10 @@ source ~/.nvm/nvm.sh && nvm use 14 && npm start
 cd react-app && npm run dev
 
 cd react-app
-npm run parity                     # 120 static cases
+npm run parity                     # 122 static cases
 npm run parity -- item-story       # filter by case name
 npm run parity -- --keep           # also keep PNGs of passing cases
-npm run parity:interact            # 28 interaction steps across 7 flows
+npm run parity:interact            # 30 interaction steps across 8 flows
 npm run parity:side-by-side        # labelled Angular | React composites
 npm run parity:record              # re-record parity/fixtures/recorded.json
 ```
@@ -104,19 +104,22 @@ npm run parity:record              # re-record parity/fixtures/recorded.json
   ask item, job item, poll item, user, user without an about, the error state of each
   view, and the `/` redirect) × the three themes × desktop and mobile, plus the
   settings panel per theme, non-default `titleFontSize`/`listSpacing`/
-  `openLinkInNewTab`, the OS dark/light colour-scheme fallback, and the loading state.
+  `openLinkInNewTab`, emptied (`''`) `titleFontSize`/`listSpacing` falling back to the
+  defaults, the OS dark/light colour-scheme fallback, and the loading state.
 * `parity/fixtures/recorded.json` – responses recorded from
   `https://node-hnapi.herokuapp.com`.
 * `parity/fixtures/handwritten.json` – what the live API cannot serve: a poll item
   (with a nested and a deleted comment), an empty feed, and user profiles — the live
   `/user/:id` endpoint has been removed and now returns 404, which the `*-error`
   cases cover instead.
-* `parity/browser.mjs` – fixture replay, `localStorage` seeding, settling, and
+* `parity/browser.mjs` – fixture replay, `localStorage` seeding (once per context, so
+  that a reload keeps what a flow changed), settling, and
   freezing of animations (the loader's animation is disabled rather than sampled).
 * `parity/interact.mjs` – header navigation and active-link state, pagination,
   feed → item → user navigation, the mobile back button, comment collapse/expand,
   every settings control (theme radios, new-tab checkbox, font size and list spacing
-  inputs, close button) plus a reload to prove persistence, hover and keyboard focus.
+  inputs, close button) plus a reload to prove persistence, the analytics page views
+  reported for the `/` redirect and a navigation, hover and keyboard focus.
   After each step the URL, `localStorage`, the asserted DOM state, and the full-page
   screenshot must match.
 * `parity/css-diff.mjs` – diagnostic: dumps the CSS rules each app actually applies,

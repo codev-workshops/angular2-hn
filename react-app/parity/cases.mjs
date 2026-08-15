@@ -85,6 +85,15 @@ export function staticCases() {
             viewport,
             storage: { theme: 'default', titleFontSize: '22', listSpacing: '12' },
         });
+        // Emptying a preference box stores an empty string; both apps must fall
+        // back to the defaults, which is visible in the panel's number inputs.
+        cases.push({
+            name: `settings-open-empty-stored-prefs--${viewport.name}`,
+            route: '/news/1',
+            viewport,
+            storage: { theme: 'default', titleFontSize: '', listSpacing: '' },
+            openSettings: true,
+        });
         cases.push({
             name: `item-open-links-in-new-tab--${viewport.name}`,
             route: '/item/49204060',
