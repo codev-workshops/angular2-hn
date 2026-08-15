@@ -23,12 +23,19 @@ declare const ga: (...args: unknown[]) => void;
 function AnalyticsPageView() {
     const location = useLocation();
     const url = `${location.pathname}${location.search}${location.hash}`;
+    // `/` immediately redirects to `/news/1`, so a page view is only reported
+    // for the resolved URL — mirroring Angular's `NavigationEnd.urlAfterRedirects`,
+    // which never emits the redirect source.
+    const isRedirectSource = location.pathname === '/';
     useEffect(() => {
+        if (isRedirectSource) {
+            return;
+        }
         if (typeof ga === 'function') {
             ga('set', 'page', url);
             ga('send', 'pageview');
         }
-    }, [url]);
+    }, [url, isRedirectSource]);
     return null;
 }
 
