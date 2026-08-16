@@ -39,14 +39,20 @@ keep using a single size token so the proportions stay intact.
 - `@Input` / `@Output`: none
 - Usage: placeholder spinner while a feed, item or user request is in flight.
 
+Migration status: **migrated** — `loader.component.scss` imports `../../scss/tokens` and contains no
+raw color or px literals.
+
 | Declaration | Token |
 | --- | --- |
 | `.loading-section` `height: 70px` | `$size-loading-section` |
-| `.loading-section` `margin: 40px 0 40px 40px` | `$space-40`, `$space-0` |
+| `.loading-section` `margin: 40px 0 40px 40px` | `$space-40` (the bare `0` stays `0`; `$space-0` is `0px` and would change the compiled CSS) |
 | `.loader` `margin: 20px 20px` / mobile `20px auto` | `$space-20` |
 | `.loader` `font-size: 11px` | `$font-size-xxs` |
 | `em`-based sizes, animation delays, `vh` margins | not tokenized (relative units) |
 | media query | `$mobile-only` |
+
+Tokens consumed by `loader.component.scss`: `$size-loading-section`, `$space-40`, `$space-20`,
+`$font-size-xxs`, plus `$mobile-only` from `_media.scss`.
 
 ## Do's and don'ts
 
