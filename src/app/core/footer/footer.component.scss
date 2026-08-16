@@ -1,11 +1,12 @@
+@import "../../shared/scss/tokens";
 @import "../../shared/scss/media";
 @import "../../shared/scss/theme_variables";
 
 #footer {
   position: relative;
-  padding: 10px;
-  height: 60px;
-  letter-spacing: 0.7px;
+  padding: $space-10;
+  height: $size-footer;
+  letter-spacing: $letter-spacing-footer;
   text-align: center;
 
   a {
