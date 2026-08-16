@@ -2,8 +2,18 @@
 
 Component: `UserComponent` (`src/app/user/**`, lazy loaded).
 
-Migration status: **not migrated** — SCSS still contains raw literals. Tokens below are the
-migration targets.
+Migration status: **migrated** — `src/app/user/user.component.scss` consumes tokens only and
+contains zero raw hex/rgba/hsla colors and zero raw px literals.
+
+Tokens consumed by `src/app/user/user.component.scss`:
+
+- Colors: `$color-white`, `$color-subtext`, `$color-named-lightgray`
+- Spacing: `$space-10`, `$space-15`, `$space-20`, `$space-30`, `$space-62`, `$space-75`,
+  `$space-110`
+- Font sizes: `$font-size-base`, `$font-size-2xl`, `$font-size-4xl`
+- Letter spacing: `$letter-spacing-wide`
+- Sizes: `$size-header-text-height`
+- Media strings: `$mobile-only`, `$laptop-only`
 
 ## UserComponent
 
@@ -16,10 +26,10 @@ migration targets.
 | Declaration | Token |
 | --- | --- |
 | `.profile` `padding: 30px` | `$space-30` |
-| `.profile` mobile `padding: 110px 15px 0 15px` | `$space-110`, `$space-15`, `$space-0` |
-| `.title-block` mobile `font-size: 15px`, `margin: 0 75px` | `$font-size-base`, `$space-0`, `$space-75` |
+| `.profile` mobile `padding: 110px 15px 0 15px` | `$space-110`, `$space-15`, bare `0` kept |
+| `.title-block` mobile `font-size: 15px`, `margin: 0 75px` | `$font-size-base`, `$space-75`, bare `0` kept |
 | `.back-button` `box-shadow: 0 0 0 lightgray` | `$color-named-lightgray` |
-| `.item-header` mobile `padding-bottom: 10px`, `padding: 10px 0 10px 0` | `$space-10`, `$space-0` |
+| `.item-header` mobile `padding-bottom: 10px`, `padding: 10px 0 10px 0` | `$space-10`, bare `0` kept |
 | `.item-header` mobile `background-color: #fff` | `$color-white` |
 | `.item-header` mobile `top: 62px`, `height: 20px` | `$space-62`, `$size-header-text-height` |
 | `.main-details .name` / `.right` `font-size: 32px` / mobile `18px` | `$font-size-4xl`, `$font-size-2xl` |
@@ -34,5 +44,6 @@ migration targets.
 - DON'T hardcode `#696969` — DO use `$color-subtext`.
 - DON'T hardcode `#fff` — DO use `$color-white`.
 - DON'T hardcode font sizes — DO use the `$font-size-*` scale.
+- DON'T replace a bare unitless `0` with `$space-0` (`0px`) — that changes the compiled bytes.
 - DO note that `.main-details .name` / `.right` colors are theme-driven via
   `src/app/shared/scss/_themes.scss`; only non-theme values belong in this component's SCSS.
