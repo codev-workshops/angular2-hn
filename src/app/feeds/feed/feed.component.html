@@ -7,7 +7,7 @@
       These are jobs at startups that were funded by Y Combinator.
       You can also get a job at a YC startup through <a href="https://triplebyte.com/?ref=yc_jobs">Triplebyte</a>.
     </p>
-    <div class="author-filter" *ngIf="feedType !== 'jobs'">
+    <div class="author-filter" *ngIf="filterableFeed">
       <label class="author-filter-label" for="author-filter">Filter by author</label>
       <input id="author-filter" type="text" name="authorFilter" placeholder="username"
         [ngModel]="authorFilter" (ngModelChange)="onAuthorFilterChange($event)">

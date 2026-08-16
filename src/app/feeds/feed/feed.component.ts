@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -11,10 +11,11 @@ import { Story } from '../../shared/models/story';
   styleUrls: ['./feed.component.scss']
 })
 
-export class FeedComponent implements OnInit {
+export class FeedComponent implements OnInit, OnDestroy {
   typeSub: Subscription;
   pageSub: Subscription;
   querySub: Subscription;
+  feedSub: Subscription;
   items: Story[];
   feedType: string;
   pageNum: number;
@@ -41,7 +42,7 @@ export class FeedComponent implements OnInit {
 
     this.pageSub = this.route.params.subscribe(params => {
       this.pageNum = params['page'] ? +params['page'] : 1;
-      this._hackerNewsAPIService.fetchFeed(this.feedType, this.pageNum)
+      this.feedSub = this._hackerNewsAPIService.fetchFeed(this.feedType, this.pageNum)
         .subscribe(
           items => this.items = items,
           error => this.errorMessage = 'Could not load ' + this.feedType + ' stories.',
@@ -53,12 +54,20 @@ export class FeedComponent implements OnInit {
     });
   }
 
+  ngOnDestroy() {
+    [this.typeSub, this.pageSub, this.querySub, this.feedSub].forEach(sub => {
+      if (sub) {
+        sub.unsubscribe();
+      }
+    });
+  }
+
   get filteredItems(): Story[] {
     if (!this.items) {
       return [];
     }
 
-    const author = this.authorFilter.trim().toLowerCase();
+    const author = this.filterableFeed ? this.authorFilter.trim().toLowerCase() : '';
 
     if (!author) {
       return this.items;
@@ -67,8 +76,12 @@ export class FeedComponent implements OnInit {
     return this.items.filter(item => (item.user || '').toLowerCase().indexOf(author) !== -1);
   }
 
+  get filterableFeed(): boolean {
+    return this.feedType !== 'jobs';
+  }
+
   get emptyMessage(): string {
-    return this.authorFilter.trim()
+    return this.filterableFeed && this.authorFilter.trim()
       ? 'No stories by an author matching "' + this.authorFilter.trim() + '" on this page.'
       : 'No stories to show.';
   }
