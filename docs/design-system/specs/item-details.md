@@ -10,8 +10,8 @@ tokens without changing compiled CSS.
 - Selector: `app-item-details`, styles `src/app/item-details/item-details.component.scss`
 - Migration status: **migrated**
 - Tokens consumed: `$space-2`, `$space-8`, `$space-10`, `$space-15`, `$space-20`, `$space-40`,
-  `$space-75`, `$space-110`, `$space-62`, `$font-size-xs`, `$font-size-lg`, `$font-family-title`,
-  `$color-named-lightgray`, `$letter-spacing-tight`, `$size-poll-bar`
+  `$space-75`, `$space-110`, `$space-62`, `$font-size-xs`, `$font-size-base`, `$font-size-lg`,
+  `$font-family-title`, `$color-named-lightgray`, `$letter-spacing-tight`, `$size-poll-bar`
 - `@Input` / `@Output`: none — the item id comes from the route params.
 - Public members: `item: Story`, `errorMessage: string`, `settings: Settings`, `goBack()`
 - Usage: routed detail page for a story or poll; renders the header, the story body and the
