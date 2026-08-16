@@ -40,12 +40,16 @@ Tokens it should consume:
 - Selector: `app-footer`, styles `src/app/core/footer/footer.component.scss`
 - `@Input` / `@Output`: none. Static markup, hidden on mobile.
 
+Migration status: **migrated** — `footer.component.scss` contains no raw colors or px literals.
+
+Tokens consumed by `src/app/core/footer/footer.component.scss`:
+
 | Declaration | Token |
 | --- | --- |
 | `padding: 10px` | `$space-10` |
 | `height: 60px` | `$size-footer` |
 | `letter-spacing: 0.7px` | `$letter-spacing-footer` |
-| media query | `$mobile-only` |
+| media query | `$mobile-only` (via `_media.scss`, from `$bp-mobile-max`) |
 
 ## SettingsComponent
 
