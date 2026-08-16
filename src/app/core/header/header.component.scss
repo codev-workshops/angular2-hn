@@ -1,17 +1,18 @@
+@import "../../shared/scss/tokens";
 @import "../../shared/scss/media";
 @import "../../shared/scss/theme_variables";
 
 #header {
-  color: #fff;
-  padding: 6px 0;
-  line-height: 18px;
+  color: $color-white;
+  padding: $space-6 0;
+  line-height: $line-height-header;
   vertical-align: middle;
   position: relative;
   z-index: 1;
   width: 100%;
 
   @media #{$mobile-only} {
-    height: 50px;
+    height: $size-header-mobile;
     position: fixed;
     top: 0;
   }
@@ -22,32 +23,32 @@
 }
 
 .home-link {
-  width: 50px;
-  height: 66px;
+  width: $size-home-link;
+  height: $size-home-link-height;
 }
 
 .logo-inner {
-  width: 32px;
+  width: $size-logo-inner;
   position: absolute;
-  left: 17px;
-  top: 18px;
+  left: $space-17;
+  top: $space-18;
   z-index: -1;
-  height: 32px;
+  height: $size-logo-inner;
   border-radius: 50%;
 
   @media #{$mobile-only} {
-    left: 16px;
-    top: 12px;
+    left: $space-16;
+    top: $space-12;
   }
 }
 
 .logo {
-  width: 50px;
-  padding: 3px 8px 0;
+  width: $size-logo;
+  padding: $space-3 $space-8 0;
 
   @media #{$mobile-only} {
-    width: 45px;
-    padding: 0 0 0 10px;
+    width: $size-logo-mobile;
+    padding: 0 0 0 $space-10;
   }
 }
 
@@ -56,17 +57,17 @@ h1 {
   display: inline-block;
   vertical-align:middle;
   margin: 0;
-  font-size: 16px;
+  font-size: $font-size-lg;
 
   a {
-    color: #fff;
+    color: $color-white;
     text-decoration: none;
   }
 }
 
 .name {
-  margin-right: 30px;
-  margin-bottom: 2px;
+  margin-right: $space-30;
+  margin-bottom: $space-2;
 
   @media #{$mobile-only} {
     display: none;
@@ -76,20 +77,20 @@ h1 {
 .header-text {
   position: absolute;
   width: inherit;
-  height: 20px;
-  left: 10px;
-  top: 27px;
+  height: $size-header-text-height;
+  left: $space-10;
+  top: $space-27;
   z-index: -1;
 
   @media #{$mobile-only} {
-    top: 22px;
+    top: $space-22;
   }
 }
 
 .left {
   position: absolute;
-  left: 60px;
-  font-size: 16px;
+  left: $space-60;
+  font-size: $font-size-lg;
 
   @media #{$mobile-only} {
     width: 100%;
@@ -99,42 +100,42 @@ h1 {
 
 .header-nav {
   display: inline-block;
-  margin-left: 20px;
+  margin-left: $space-20;
 
   @media #{$mobile-only} {
-    margin-left: 60px;
+    margin-left: $space-60;
   }
 
   a {
-    color: hsla(0,0%,100%,.9);
+    color: $color-white-hsla-90;
     text-decoration: none;
-    margin: 0 5px;
-    letter-spacing: 1.8px;
+    margin: 0 $space-5;
+    letter-spacing: $letter-spacing-nav;
 
     &:hover {
-      color: #fff;
+      color: $color-white;
     }
   }
 
   .active {
-    color: #fff;
+    color: $color-white;
   }
 }
 
 .info {
   position: absolute;
   top: 0;
-  right: 20px;
+  right: $space-20;
   height: 100%;
 
   @media #{$mobile-only} {
-    right: 10px;
+    right: $space-10;
   }
 
   img {
     opacity: 0.8;
-    width: 25px;
-    margin-top: 21.5px;
+    width: $size-icon;
+    margin-top: $space-21-5;
     display: block;
 
     &:hover {
@@ -143,7 +144,7 @@ h1 {
     }
 
     @media #{$mobile-only} {
-      margin-top: 15px;
+      margin-top: $space-15;
     }
   }
 }
