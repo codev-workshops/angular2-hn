@@ -1,3 +1,4 @@
+@import "../shared/scss/tokens";
 @import "../shared/scss/media";
 @import "../shared/scss/theme_variables";
 
@@ -8,40 +9,40 @@
   -webkit-transition: opacity .2s ease;
   transition: opacity .2s ease;
   box-sizing: border-box;
-  padding: 8px 0;
+  padding: $space-8 0;
   z-index: 0;
 }
 
 .item {
   box-sizing: border-box;
-  padding: 10px 40px 0 40px;
+  padding: $space-10 $space-40 0 $space-40;
   z-index: 0;
 }
 
 @media #{$tablet-only} {
   .item {
-    padding: 10px 20px 0 40px;
+    padding: $space-10 $space-20 0 $space-40;
   }
 }
 
 @media #{$mobile-only} {
   .item {
     box-sizing: border-box;
-    padding: 110px 15px 0 15px;
+    padding: $space-110 $space-15 0 $space-15;
   }
 }
 
 .head-margin {
-  margin-bottom: 15px;
+  margin-bottom: $space-15;
 }
 
 p {
-  margin: 2px 0;
+  margin: $space-2 0;
 }
 
 .subject {
   word-wrap: break-word;
-  margin-top: 20px;
+  margin-top: $space-20;
 }
 
 a {
@@ -62,8 +63,8 @@ a {
 }
 
 .title {
-  font-size: 16px;
-  font-family: Verdana, Geneva, sans-serif;
+  font-size: $font-size-lg;
+  font-family: $font-family-title;
 }
 
 .title-block {
@@ -71,12 +72,12 @@ a {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  margin: 0 75px;
+  margin: 0 $space-75;
 }
 
 @media #{$mobile-only} {
   .title {
-    font-size: 15px;
+    font-size: $font-size-base;
   }
   .back-button {
     position: absolute;
@@ -84,7 +85,7 @@ a {
     width: 0.6rem;
     height: 0.6rem;
     background: transparent;
-    box-shadow: 0 0 0 lightgray;
+    box-shadow: 0 0 0 $color-named-lightgray;
     transition: all 200ms ease;
     left: 4%;
     transform: translate3d(0, -50%, 0) rotate(-135deg);
@@ -92,13 +93,13 @@ a {
 }
 
 .subtext {
-  font-size: 12px;
+  font-size: $font-size-xs;
   font-weight: bold;
-  letter-spacing: 0.5px;
+  letter-spacing: $letter-spacing-tight;
 }
 
 .domain {
-  letter-spacing: 0.5px;
+  letter-spacing: $letter-spacing-tight;
 }
 
 .subtext a {
@@ -108,20 +109,20 @@ a {
 }
 
 .item-details {
-  padding: 10px;
+  padding: $space-10;
 }
 
 .item-header {
-  padding-bottom: 10px;
+  padding-bottom: $space-10;
 }
 
 @media #{$mobile-only} {
   .item-header {
-    padding: 10px 0 10px 0;
+    padding: $space-10 0 $space-10 0;
     position: fixed;
     width: 100%;
     left: 0;
-    top: 62px;
+    top: $space-62;
   }
 }
 
@@ -136,14 +137,14 @@ a {
     margin-top: 1em;
   }
   .pollBar {
-    height: 10px;
+    height: $size-poll-bar;
     margin-bottom: 1em;
   }
 }
 
 ul {
   list-style-type: none;
-  padding: 10px 0;
+  padding: $space-10 0;
 }
 
 li {
