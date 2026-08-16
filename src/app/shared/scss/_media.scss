@@ -1,3 +1,5 @@
-$mobile-only: "only screen and (max-width : 768px)";
-$laptop-only: "only screen and (min-width : 769px)";
-$tablet-only: "only screen and (max-width : 1024px)";
+@import "./tokens";
+
+$mobile-only: "only screen and (max-width : #{$bp-mobile-max})";
+$laptop-only: "only screen and (min-width : #{$bp-laptop-min})";
+$tablet-only: "only screen and (max-width : #{$bp-tablet-max})";
