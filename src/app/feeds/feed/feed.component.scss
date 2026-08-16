@@ -1,3 +1,4 @@
+@import "../../shared/scss/tokens";
 @import "../../shared/scss/media";
 @import "../../shared/scss/theme_variables";
 
@@ -11,13 +12,13 @@ a {
 }
 
 ol {
-  padding: 0 40px;
+  padding: 0 $space-40;
   margin: 0;
 
   @media #{$mobile-only} {
     box-sizing: border-box;
     list-style: none;
-    padding: 0 10px;
+    padding: 0 $space-10;
   }
 
   li {
@@ -29,7 +30,7 @@ ol {
 
 .list-margin {
   @media #{$mobile-only} {
-    margin-top: 55px;
+    margin-top: $space-55;
   }
 }
 
@@ -40,22 +41,22 @@ ol {
   -webkit-transition: opacity .2s ease;
   transition: opacity .2s ease;
   box-sizing: border-box;
-  padding: 8px 0;
+  padding: $space-8 0;
   z-index: 0;
 }
 
 .post {
-  padding: 10px 0 10px 5px;
+  padding: $space-10 0 $space-10 $space-5;
   transition: background-color 0.2s ease;
-  border-bottom: 1px solid #CECECB;
+  border-bottom: $border-hairline-light;
 
   .itemNum {
-    color: #696969;
+    color: $color-subtext;
     position: absolute;
-    width: 30px;
+    width: $size-item-num;
     text-align: right;
     left: 0;
-    top: 4px;
+    top: $space-4;
   }
 }
 
@@ -65,9 +66,9 @@ ol {
 
 
 .nav {
-  padding: 10px 40px;
-  margin-top: 10px;
-  font-size: 17px;
+  padding: $space-10 $space-40;
+  margin-top: $space-10;
+  font-size: $font-size-xl;
 
   a {
     @media #{$mobile-only} {
@@ -76,14 +77,14 @@ ol {
   }
 
   @media #{$mobile-only} {
-    margin: 20px 0;
+    margin: $space-20 0;
     text-align: center;
-    padding: 10px 80px;
-    height: 20px;
+    padding: $space-10 $space-80;
+    height: $space-20;
   }
 
   .prev {
-    padding-right: 20px;
+    padding-right: $space-20;
 
     @media #{$mobile-only} {
       float: left;
@@ -99,10 +100,10 @@ ol {
 }
 
 .job-header {
-  font-size: 15px;
-  padding: 0 40px 10px;
+  font-size: $font-size-base;
+  padding: 0 $space-40 $space-10;
 
   @media #{$mobile-only} {
-    padding: 60px 15px 25px 15px;
+    padding: $space-60 $space-15 $space-25 $space-15;
   }
 }

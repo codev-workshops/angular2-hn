@@ -1,11 +1,12 @@
+@import "../../shared/scss/tokens";
 @import "../../shared/scss/media";
 @import "../../shared/scss/theme_variables";
 
 p {
-    margin: 2px 0;
+    margin: $space-2 0;
 
     @media #{$mobile-only} {
-      margin-bottom: 5px;
+      margin-bottom: $space-5;
       margin-top: 0;
    }
   }
@@ -16,14 +17,14 @@ p {
   }
 
   .title {
-    font-size: 16px;
-    font-family: Verdana, Geneva, sans-serif;
+    font-size: $font-size-lg;
+    font-family: $font-family-title;
   }
 
   .subtext-laptop {
-    font-size: 12px;
+    font-size: $font-size-xs;
     font-weight: bold;
-    letter-spacing: 0.5px;
+    letter-spacing: $letter-spacing-tight;
 
     a {
       &:hover {
@@ -36,9 +37,9 @@ p {
   }
 
   .subtext-palm {
-    font-size: 13px;
+    font-size: $font-size-sm;
     font-weight: bold;
-    letter-spacing: 0.5px;
+    letter-spacing: $letter-spacing-tight;
 
     a {
       &:hover {
@@ -47,7 +48,7 @@ p {
     }
 
     .details {
-      margin-top: 5px;
+      margin-top: $space-5;
 
       .right {
         float: right;
@@ -59,10 +60,10 @@ p {
   }
 
   .domain {
-    color: #696969;
-    letter-spacing: 0.5px;
+    color: $color-subtext;
+    letter-spacing: $letter-spacing-tight;
   }
 
   .item-details {
-    padding: 10px;
+    padding: $space-10;
   }

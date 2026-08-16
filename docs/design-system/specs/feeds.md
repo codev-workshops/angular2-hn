@@ -2,9 +2,12 @@
 
 Components: `FeedComponent`, `ItemComponent` (`src/app/feeds/**`).
 
-Migration status: **not migrated yet** — this family is the designated pilot for the token
-migration (it holds the canonical duplicated colors `#696969` / `#CECECB` and many raw px values,
-and is self-contained).
+Migration status: **migrated** — this family was the pilot for the token migration (it held the
+canonical duplicated colors `#696969` / `#CECECB` and many raw px values, and is self-contained).
+Both SCSS files import `../../shared/scss/tokens` and contain zero raw hex colors and zero raw
+`px` literals; breakpoints go through `$mobile-only` / `$laptop-only`, which are now built from
+`$bp-mobile-max` / `$bp-laptop-min` in `_media.scss`. Bare unitless `0` values were left as `0`
+(they are not px literals) so the compiled CSS stays byte-identical.
 
 ## FeedComponent
 
@@ -16,21 +19,21 @@ and is self-contained).
 - Usage: routed component rendering the paginated ordered list of stories; renders one
   `<item>` per story plus the prev/more navigation.
 
-Tokens it should consume:
+Tokens it consumes:
 
 | Declaration | Token |
 | --- | --- |
-| `ol` `padding: 0 40px` / mobile `0 10px` | `$space-0`, `$space-40`, `$space-10` |
+| `ol` `padding: 0 40px` / mobile `0 10px` | `$space-40`, `$space-10` |
 | `.list-margin` mobile `margin-top: 55px` | `$space-55` |
-| `.main-content` `padding: 8px 0` | `$space-8`, `$space-0` |
-| `.post` `padding: 10px 0 10px 5px` | `$space-10`, `$space-0`, `$space-5` |
+| `.main-content` `padding: 8px 0` | `$space-8` |
+| `.post` `padding: 10px 0 10px 5px` | `$space-10`, `$space-5` |
 | `.post` `border-bottom: 1px solid #CECECB` | `$border-hairline-light` (`$border-width-hairline`, `$color-border-light`) |
 | `.post .itemNum` `color: #696969` | `$color-subtext` |
 | `.post .itemNum` `width: 30px`, `top: 4px` | `$size-item-num`, `$space-4` |
 | `.nav` `padding: 10px 40px`, `margin-top: 10px`, `font-size: 17px` | `$space-10`, `$space-40`, `$font-size-xl` |
-| `.nav` mobile `margin: 20px 0`, `padding: 10px 80px`, `height: 20px` | `$space-20`, `$space-0`, `$space-10`, `$space-80` |
+| `.nav` mobile `margin: 20px 0`, `padding: 10px 80px`, `height: 20px` | `$space-20`, `$space-10`, `$space-80` |
 | `.nav .prev` `padding-right: 20px` | `$space-20` |
-| `.job-header` `font-size: 15px`, `padding: 0 40px 10px` | `$font-size-base`, `$space-0`, `$space-40`, `$space-10` |
+| `.job-header` `font-size: 15px`, `padding: 0 40px 10px` | `$font-size-base`, `$space-40`, `$space-10` |
 | `.job-header` mobile `padding: 60px 15px 25px 15px` | `$space-60`, `$space-15`, `$space-25` |
 | media queries | `$mobile-only` (from `$bp-mobile-max`) |
 
@@ -43,11 +46,11 @@ Tokens it should consume:
 - Usage: a single row inside the feed list; renders the title/domain plus a laptop and a palm
   variant of the subtext.
 
-Tokens it should consume:
+Tokens it consumes:
 
 | Declaration | Token |
 | --- | --- |
-| `p` `margin: 2px 0`, mobile `margin-bottom: 5px` | `$space-2`, `$space-0`, `$space-5` |
+| `p` `margin: 2px 0`, mobile `margin-bottom: 5px` | `$space-2`, `$space-5` |
 | `.title` `font-size: 16px` | `$font-size-lg` |
 | `.title` `font-family: Verdana, Geneva, sans-serif` | `$font-family-title` |
 | `.subtext-laptop` `font-size: 12px` | `$font-size-xs` |
@@ -66,3 +69,19 @@ Tokens it should consume:
 - DON'T hardcode px paddings/margins — DO use the `$space-*` scale.
 - DON'T write raw media strings — DO use `$mobile-only` / `$laptop-only`.
 - DON'T change a token value to tweak this family; add a token and update `tokens.json`.
+- DO verify pixel neutrality after touching these files:
+  `npx sass --no-source-map src/app/feeds/feed/feed.component.scss out.css` and diff against the
+  previous output.
+
+## Exact tokens consumed after migration
+
+`feed.component.scss`: `$space-4`, `$space-5`, `$space-8`, `$space-10`, `$space-15`, `$space-20`,
+`$space-25`, `$space-40`, `$space-55`, `$space-60`, `$space-80`, `$font-size-base`,
+`$font-size-xl`, `$color-subtext`, `$size-item-num`, `$border-hairline-light`, `$mobile-only`.
+
+`item.component.scss`: `$space-2`, `$space-5`, `$space-10`, `$font-size-xs`, `$font-size-sm`,
+`$font-size-lg`, `$font-family-title`, `$letter-spacing-tight`, `$color-subtext`, `$mobile-only`,
+`$laptop-only`.
+
+No new tokens were needed: every literal removed from these two files already existed in
+`_tokens.scss` / `tokens.json`.
