@@ -66,6 +66,7 @@ the token first (step 1 and 2 above) and then reference it.
 - [core](specs/core.md) — header, footer, settings
 - [feeds](specs/feeds.md) — feed, item
 - [item-details](specs/item-details.md) — item-details, comment
+- [app](specs/app.md) — app shell
 - [shared](specs/shared.md) — error-message, loader
 - [user](specs/user.md) — user
 
