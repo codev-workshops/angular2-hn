@@ -9,8 +9,13 @@ migration targets.
 
 ## ErrorMessageComponent
 
+Migration status: **migrated**.
+
 - Selector: `app-error-message`, styles
   `src/app/shared/components/error-message/error-message.component.scss`
+- Consumed tokens in `src/app/shared/components/error-message/error-message.component.scss`:
+  `$size-error-section`, `$size-skull`, `$space-25`, `$radius-skull-head`, `$radius-circle`,
+  `$radius-skull-nose`, `$radius-skull-teeth`, `$mobile-only`
 - `@Input`: `message: string`
 - `@Output`: none
 - Usage: shown instead of content when an API call fails; draws the CSS skull illustration plus

@@ -119,9 +119,9 @@ $bp-settings-modal: 700px;
 // -------------------------------------------------------------------------------------------
 $radius-sm: 5px;
 $radius-circle: 50%;
-$radius-skull-head: 15% / 20%;
-$radius-skull-nose: 50% / 30%;
-$radius-skull-teeth: 50% / 20%;
+$radius-skull-head: unquote("15%/20%");
+$radius-skull-nose: unquote("50%/30%");
+$radius-skull-teeth: unquote("50%/20%");
 
 // -------------------------------------------------------------------------------------------
 // Component sizes (fixed widths / heights)
