@@ -9,8 +9,13 @@ migration targets.
 
 ## ErrorMessageComponent
 
+Migration status: **migrated**.
+
 - Selector: `app-error-message`, styles
   `src/app/shared/components/error-message/error-message.component.scss`
+- Consumed tokens in `src/app/shared/components/error-message/error-message.component.scss`:
+  `$size-error-section`, `$size-skull`, `$space-25`, `$radius-skull-head`, `$radius-circle`,
+  `$radius-skull-nose`, `$radius-skull-teeth`, `$mobile-only`
 - `@Input`: `message: string`
 - `@Output`: none
 - Usage: shown instead of content when an API call fails; draws the CSS skull illustration plus
@@ -20,7 +25,7 @@ migration targets.
 | --- | --- |
 | `.error-section` `height: 300px` | `$size-error-section` |
 | `.error-section` `margin: 200px` | `$size-skull` (`200px`, same literal as the skull size) |
-| `.error-section p` `padding: 0 25px`, `margin-top: 25px` | `$space-0`, `$space-25` |
+| `.error-section p` `padding: 0 25px`, `margin-top: 25px` | `$space-25` (unitless `0` remains literal) |
 | `.error-section` mobile `margin: 30vh 0` | vh values are not tokenized |
 | `.skull` `width`/`height: $skull-size` | `$size-skull` (currently `$skull-size` from `_theme_variables.scss`) |
 | `.head` `border-radius: 15% / 20%` | `$radius-skull-head` |
