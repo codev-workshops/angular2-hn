@@ -1,3 +1,4 @@
+@import "../../scss/tokens";
 @import "../../scss/media";
 @import "../../scss/theme_variables";
 
@@ -25,8 +26,8 @@
 }
 
 .loading-section {
-    height: 70px;
-    margin: 40px 0 40px 40px;
+    height: $size-loading-section;
+    margin: $space-40 0 $space-40 $space-40;
 
   @media #{$mobile-only} {
     display: block;
@@ -37,9 +38,9 @@
 
 .loader {
   text-indent: -9999em;
-  margin: 20px 20px;
+  margin: $space-20 $space-20;
   position: relative;
-  font-size: 11px;
+  font-size: $font-size-xxs;
   -webkit-transform: translateZ(0);
   -ms-transform: translateZ(0);
   transform: translateZ(0);
@@ -50,7 +51,7 @@
   }
 
   @media #{$mobile-only} {
-    margin: 20px auto;
+    margin: $space-20 auto;
   }
 }
 
