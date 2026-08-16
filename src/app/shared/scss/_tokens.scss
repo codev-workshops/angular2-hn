@@ -1,0 +1,154 @@
+// -------------------------------------------------------------------------------------------
+// Design tokens
+//
+// SCSS mirror of docs/design-system/tokens.json (the machine readable source of truth).
+// Values are byte-for-byte the literals currently used across src/**/*.scss, so consuming a
+// token never changes a rendered pixel. This file declares variables only and emits no CSS.
+//
+// See docs/design-system/README.md for naming conventions and how to add a token.
+// -------------------------------------------------------------------------------------------
+
+// -------------------------------------------------------------------------------------------
+// Color
+// -------------------------------------------------------------------------------------------
+$color-white: #fff;
+$color-black: #000;
+$color-surface-day: #f5f5f5;
+$color-subtext: #696969;
+$color-subtext-night: #999;
+$color-brand-red: #b92b27;
+$color-brand-cyan: #00c0ff;
+$color-night-body: #37474F;
+$color-night-surface: #263238;
+$color-border-light: #CECECB;
+
+// Named CSS colors still used by legacy declarations
+$color-named-white: white;
+$color-named-lightgray: lightgray;
+
+// Translucent colors
+$color-overlay: rgba(0, 0, 0, 0.7);
+$color-white-alpha-50: rgba(255, 255, 255, 0.5);
+$color-white-alpha-60: rgba(255, 255, 255, 0.6);
+$color-white-alpha-70: rgba(255, 255, 255, 0.7);
+$color-white-alpha-75: rgba(255, 255, 255, 0.75);
+$color-white-alpha-80: rgba(255, 255, 255, 0.8);
+$color-white-hsla-90: hsla(0, 0%, 100%, 0.9);
+
+// -------------------------------------------------------------------------------------------
+// Spacing (margin / padding / offsets)
+// -------------------------------------------------------------------------------------------
+$space-0: 0px;
+$space-2: 2px;
+$space-3: 3px;
+$space-4: 4px;
+$space-5: 5px;
+$space-6: 6px;
+$space-8: 8px;
+$space-10: 10px;
+$space-12: 12px;
+$space-15: 15px;
+$space-16: 16px;
+$space-17: 17px;
+$space-18: 18px;
+$space-20: 20px;
+$space-21-5: 21.5px;
+$space-22: 22px;
+$space-24: 24px;
+$space-25: 25px;
+$space-27: 27px;
+$space-30: 30px;
+$space-40: 40px;
+$space-55: 55px;
+$space-60: 60px;
+$space-62: 62px;
+$space-70: 70px;
+$space-75: 75px;
+$space-80: 80px;
+$space-110: 110px;
+
+// -------------------------------------------------------------------------------------------
+// Font size
+// -------------------------------------------------------------------------------------------
+$font-size-xxs: 11px;
+$font-size-xs: 12px;
+$font-size-sm: 13px;
+$font-size-md: 14px;
+$font-size-base: 15px;
+$font-size-lg: 16px;
+$font-size-xl: 17px;
+$font-size-2xl: 18px;
+$font-size-3xl: 30px;
+$font-size-4xl: 32px;
+
+// -------------------------------------------------------------------------------------------
+// Font family
+// -------------------------------------------------------------------------------------------
+$font-family-base: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+$font-family-title: Verdana, Geneva, sans-serif;
+
+// -------------------------------------------------------------------------------------------
+// Line height
+// -------------------------------------------------------------------------------------------
+$line-height-base: 1.3;
+$line-height-comment: 1.5em;
+$line-height-header: 18px;
+
+// -------------------------------------------------------------------------------------------
+// Letter spacing
+// -------------------------------------------------------------------------------------------
+$letter-spacing-tight: 0.5px;
+$letter-spacing-footer: 0.7px;
+$letter-spacing-normal: 1px;
+$letter-spacing-nav: 1.8px;
+$letter-spacing-wide: 2px;
+
+// -------------------------------------------------------------------------------------------
+// Breakpoints
+//
+// $bp-settings-modal is an anomaly: it is used by the settings modal only and does not match
+// the standard scale. See docs/design-system/README.md.
+// -------------------------------------------------------------------------------------------
+$bp-mobile-max: 768px;
+$bp-laptop-min: 769px;
+$bp-tablet-max: 1024px;
+$bp-settings-modal: 700px;
+
+// -------------------------------------------------------------------------------------------
+// Radius
+// -------------------------------------------------------------------------------------------
+$radius-sm: 5px;
+$radius-circle: 50%;
+$radius-skull-head: 15% / 20%;
+$radius-skull-nose: 50% / 30%;
+$radius-skull-teeth: 50% / 20%;
+
+// -------------------------------------------------------------------------------------------
+// Component sizes (fixed widths / heights)
+// -------------------------------------------------------------------------------------------
+$size-skull: 200px;
+$size-error-section: 300px;
+$size-footer: 60px;
+$size-header-mobile: 50px;
+$size-home-link: 50px;
+$size-home-link-height: 66px;
+$size-logo: 50px;
+$size-logo-mobile: 45px;
+$size-logo-inner: 32px;
+$size-icon: 25px;
+$size-item-num: 30px;
+$size-input-height: 20px;
+$size-header-text-height: 20px;
+$size-loading-section: 70px;
+$size-poll-bar: 10px;
+$size-wrapper-min-height: 80px;
+
+// -------------------------------------------------------------------------------------------
+// Borders
+// -------------------------------------------------------------------------------------------
+$border-width-hairline: 1px;
+$border-width-theme: 2px;
+$border-hairline-light: $border-width-hairline solid $color-border-light;
+$border-hairline-white: $border-width-hairline solid $color-named-white;
+$border-theme-day: $border-width-theme solid $color-brand-red;
+$border-theme-night: $border-width-theme solid $color-brand-cyan;
