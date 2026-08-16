@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { HackerNewsAPIService } from '../../shared/services/hackernews-api.service';
 import { Story } from '../../shared/models/story';
@@ -12,18 +11,22 @@ import { Story } from '../../shared/models/story';
   styleUrls: ['./feed.component.scss']
 })
 
-export class FeedComponent implements OnInit {
+export class FeedComponent implements OnInit, OnDestroy {
   typeSub: Subscription;
   pageSub: Subscription;
+  querySub: Subscription;
+  feedSub: Subscription;
   items: Story[];
   feedType: string;
   pageNum: number;
   listStart: number;
+  authorFilter = '';
   errorMessage = '';
 
   constructor(
     private _hackerNewsAPIService: HackerNewsAPIService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -33,9 +36,13 @@ export class FeedComponent implements OnInit {
         this.feedType = (data as any).feedType;
       });
 
+    this.querySub = this.route.queryParams.subscribe(params => {
+      this.authorFilter = params['author'] || '';
+    });
+
     this.pageSub = this.route.params.subscribe(params => {
       this.pageNum = params['page'] ? +params['page'] : 1;
-      this._hackerNewsAPIService.fetchFeed(this.feedType, this.pageNum)
+      this.feedSub = this._hackerNewsAPIService.fetchFeed(this.feedType, this.pageNum)
         .subscribe(
           items => this.items = items,
           error => this.errorMessage = 'Could not load ' + this.feedType + ' stories.',
@@ -45,5 +52,51 @@ export class FeedComponent implements OnInit {
           }
         );
     });
+  }
+
+  ngOnDestroy() {
+    [this.typeSub, this.pageSub, this.querySub, this.feedSub].forEach(sub => {
+      if (sub) {
+        sub.unsubscribe();
+      }
+    });
+  }
+
+  get filteredItems(): Story[] {
+    if (!this.items) {
+      return [];
+    }
+
+    const author = this.filterableFeed ? this.authorFilter.trim().toLowerCase() : '';
+
+    if (!author) {
+      return this.items;
+    }
+
+    return this.items.filter(item => (item.user || '').toLowerCase().indexOf(author) !== -1);
+  }
+
+  get filterableFeed(): boolean {
+    return this.feedType !== 'jobs';
+  }
+
+  get emptyMessage(): string {
+    return this.filterableFeed && this.authorFilter.trim()
+      ? 'No stories by an author matching "' + this.authorFilter.trim() + '" on this page.'
+      : 'No stories to show.';
+  }
+
+  onAuthorFilterChange(author: string) {
+    this.authorFilter = author;
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: { author: author.trim() ? author.trim() : null },
+      queryParamsHandling: 'merge',
+      replaceUrl: true
+    });
+  }
+
+  clearAuthorFilter() {
+    this.onAuthorFilterChange('');
   }
 }

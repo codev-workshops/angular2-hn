@@ -7,16 +7,20 @@
       These are jobs at startups that were funded by Y Combinator.
       You can also get a job at a YC startup through <a href="https://triplebyte.com/?ref=yc_jobs">Triplebyte</a>.
     </p>
-    <ol *ngIf="feedType !== 'new'" [class.list-margin]="feedType !== 'jobs'" start="{{ listStart }}">
-      <li *ngFor="let item of items" class="post">
-        <item class="item-block" [item]="item"></item>
-      </li>
-    </ol>
+    <div class="author-filter" *ngIf="filterableFeed">
+      <label class="author-filter-label" for="author-filter">Filter by author</label>
+      <input id="author-filter" type="text" name="authorFilter" placeholder="username"
+        [ngModel]="authorFilter" (ngModelChange)="onAuthorFilterChange($event)">
+      <button type="button" class="clear-filter" *ngIf="authorFilter" (click)="clearAuthorFilter()">Clear</button>
+    </div>
+    <app-story-list [stories]="filteredItems" [listStart]="listStart" [emptyMessage]="emptyMessage"></app-story-list>
     <div class="nav">
-      <a *ngIf="listStart !== 1" [routerLink]="['/' + feedType, pageNum - 1]" routerLinkActive="active" class="prev">
+      <a *ngIf="listStart !== 1" [routerLink]="['/' + feedType, pageNum - 1]" queryParamsHandling="preserve"
+        routerLinkActive="active" class="prev">
         ‹ Prev
       </a>
-      <a *ngIf="items.length === 30" [routerLink]="['/' + feedType, pageNum + 1]" routerLinkActive="active" class="more">
+      <a *ngIf="items.length === 30" [routerLink]="['/' + feedType, pageNum + 1]" queryParamsHandling="preserve"
+        routerLinkActive="active" class="more">
         More ›
       </a>
     </div>

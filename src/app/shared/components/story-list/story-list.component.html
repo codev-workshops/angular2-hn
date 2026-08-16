@@ -1,0 +1,6 @@
+<ol *ngIf="stories.length > 0" start="{{ listStart }}">
+  <li *ngFor="let story of stories" class="post">
+    <item class="item-block" [item]="story"></item>
+  </li>
+</ol>
+<p class="empty-message" *ngIf="stories.length === 0">{{ emptyMessage }}</p>

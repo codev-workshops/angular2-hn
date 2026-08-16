@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Story } from '../../shared/models/story';
+import { Story } from '../../models/story';
 
-import { SettingsService } from '../../shared/services/settings.service';
-import { Settings } from '../../shared/models/settings';
+import { SettingsService } from '../../services/settings.service';
+import { Settings } from '../../models/settings';
 
 @Component({
   selector: 'item',
