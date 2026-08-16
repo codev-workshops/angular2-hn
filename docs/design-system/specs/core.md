@@ -55,6 +55,13 @@ Tokens it should consume:
   `selectTheme(theme)`, `changeTitleFont(val)`, `changeSpacing(val)`
 - Usage: modal overlay toggled from the header; theme/font/spacing preferences.
 
+Migration status: **migrated** — `settings.component.scss` imports `../../shared/scss/tokens` as its
+first import and contains zero raw hex/rgba/hsla colors and zero raw `px` literals. Bare unitless
+`0` values (`top`/`bottom`/`left`/`right`, `margin-top`) were left as `0`, and `%` widths are
+intentionally not tokenized, so the compiled CSS is byte-identical to before the migration.
+
+Tokens it consumes:
+
 | Declaration | Token |
 | --- | --- |
 | `background: rgba(0, 0, 0, 0.7)` (overlay) | `$color-overlay` |
