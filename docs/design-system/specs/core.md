@@ -3,8 +3,8 @@
 Components: `HeaderComponent`, `FooterComponent`, `SettingsComponent`
 (`src/app/core/**`). All three are singletons rendered by `AppComponent`.
 
-Migration status: **not migrated** — SCSS still contains raw literals. Tokens listed below are the
-targets for the migration.
+Migration status: per component — see each section below. Tokens listed for a component that is not
+yet migrated are the targets for its migration.
 
 ## HeaderComponent
 
@@ -13,27 +13,35 @@ targets for the migration.
 - Public members: `settings: Settings`, `toggleSettings()`, `scrollTop()`
 - Usage: rendered once at the top of the app shell; fixed to the top on mobile.
 
-Tokens it should consume:
+Status: **migrated**. `header.component.scss` imports
+`@import "../../shared/scss/tokens";` first, then `media` and `theme_variables`, and contains zero
+raw hex/rgba/hsla colors and zero raw px literals.
+
+Tokens it consumes:
 
 | Declaration | Token |
 | --- | --- |
-| `color: #fff` (header text, `h1 a`, `.active`, nav hover) | `$color-white` |
-| `color: hsla(0,0%,100%,.9)` (nav links) | `$color-white-hsla-90` |
-| `line-height: 18px` | `$line-height-header` |
-| `padding: 6px 0` | `$space-6`, `$space-0` |
-| mobile header height `50px` | `$size-header-mobile` |
-| `.home-link` `50px` / `66px` | `$size-home-link`, `$size-home-link-height` |
-| `.logo-inner` `32px`, `left: 17px`, `top: 18px`, mobile `16px` / `12px` | `$size-logo-inner`, `$space-17`, `$space-18`, `$space-16`, `$space-12` |
-| `.logo` `50px` / `45px`, `padding: 3px 8px 0`, mobile `0 0 0 10px` | `$size-logo`, `$size-logo-mobile`, `$space-3`, `$space-8`, `$space-10` |
-| `h1`, `.left` `font-size: 16px` | `$font-size-lg` |
-| `.name` `margin-right: 30px`, `margin-bottom: 2px` | `$space-30`, `$space-2` |
-| `.header-text` `height: 20px`, `left: 10px`, `top: 27px`, mobile `top: 22px` | `$size-header-text-height`, `$space-10`, `$space-27`, `$space-22` |
-| `.left` `left: 60px` | `$space-60` |
-| `.header-nav` `margin-left: 20px` / mobile `60px`, `margin: 0 5px` | `$space-20`, `$space-60`, `$space-5` |
-| `.header-nav a` `letter-spacing: 1.8px` | `$letter-spacing-nav` |
-| `.info` `right: 20px` / mobile `10px` | `$space-20`, `$space-10` |
-| `.info img` `width: 25px`, `margin-top: 21.5px` / mobile `15px` | `$size-icon`, `$space-21-5`, `$space-15` |
+| `color` (header text, `h1 a`, `.active`, nav hover) | `$color-white` |
+| `.header-nav a` `color` | `$color-white-hsla-90` |
+| `#header` `line-height` | `$line-height-header` |
+| `#header` `padding: 6px 0` | `$space-6` (the `0` stays a bare unitless `0`) |
+| `#header` mobile `height` | `$size-header-mobile` |
+| `.home-link` `width` / `height` | `$size-home-link`, `$size-home-link-height` |
+| `.logo-inner` `width` / `height`, `left`, `top`, mobile `left` / `top` | `$size-logo-inner`, `$space-17`, `$space-18`, `$space-16`, `$space-12` |
+| `.logo` `width` / mobile `width`, `padding`, mobile `padding` | `$size-logo`, `$size-logo-mobile`, `$space-3`, `$space-8`, `$space-10` |
+| `h1`, `.left` `font-size` | `$font-size-lg` |
+| `.name` `margin-right`, `margin-bottom` | `$space-30`, `$space-2` |
+| `.header-text` `height`, `left`, `top`, mobile `top` | `$size-header-text-height`, `$space-10`, `$space-27`, `$space-22` |
+| `.left` `left` | `$space-60` |
+| `.header-nav` `margin-left` / mobile `margin-left`, `a` `margin: 0 5px` | `$space-20`, `$space-60`, `$space-5` |
+| `.header-nav a` `letter-spacing` | `$letter-spacing-nav` |
+| `.info` `right` / mobile `right` | `$space-20`, `$space-10` |
+| `.info img` `width`, `margin-top` / mobile `margin-top` | `$size-icon`, `$space-21-5`, `$space-15` |
 | media queries | `$mobile-only` (from `$bp-mobile-max`) |
+
+`.logo-inner` keeps `border-radius: 50%` as a literal percentage (percentages are intentionally not
+tokenized), and `opacity`, `z-index` and `width: 100%` values are unitless/percentage and untouched.
+No new tokens were needed.
 
 ## FooterComponent
 
