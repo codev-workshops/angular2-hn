@@ -8,7 +8,8 @@
       You can also get a job at a YC startup through <a href="https://triplebyte.com/?ref=yc_jobs">Triplebyte</a>.
     </p>
     <ol *ngIf="feedType !== 'new'" [class.list-margin]="feedType !== 'jobs'" start="{{ listStart }}">
-      <li *ngFor="let item of items" class="post">
+      <li *ngFor="let item of items; let i = index" #feedRow class="post" [class.selected]="i === selectedIndex"
+        [attr.aria-current]="i === selectedIndex ? 'true' : null" (click)="selectedIndex = i">
         <item class="item-block" [item]="item"></item>
       </li>
     </ol>
