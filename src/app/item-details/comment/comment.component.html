@@ -6,7 +6,7 @@
   </div>
   <div class="comment-tree">
     <div [hidden]="collapse">
-      <p class="comment-text" [innerHTML]="comment.content"></p>
+      <p class="comment-text" [innerHTML]="comment.content | safeHtml"></p>
       <ul class="subtree">
         <li *ngFor="let subComment of comment.comments"> 
           <app-comment [comment]="subComment"></app-comment>

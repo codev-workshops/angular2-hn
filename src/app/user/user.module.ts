@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { UserComponent } from './user.component';
 import { SharedComponentsModule } from '../shared/components/shared-components.module';
+import { PipesModule } from '../shared/pipes/pipes.module';
 
 
 const routes: Routes = [
@@ -14,7 +15,7 @@ const routes: Routes = [
 
 
 @NgModule({
-  imports: [CommonModule, SharedComponentsModule, RouterModule.forChild(routes)],
+  imports: [CommonModule, SharedComponentsModule, PipesModule, RouterModule.forChild(routes)],
   declarations: [UserComponent],
   exports: [UserComponent, RouterModule]
 })
