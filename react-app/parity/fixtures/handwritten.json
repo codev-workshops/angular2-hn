@@ -1,0 +1,66 @@
+{
+  "/news?page=9": [],
+  "/user/worik": {
+    "id": "worik",
+    "created": "about 12 years ago",
+    "karma": 4321,
+    "avg": null,
+    "about": "<p>Kiwi. Interested in <i>everything</i>.</p><p><a href=\"https://example.com\" rel=\"nofollow\">https://example.com</a></p><pre><code>  a preformatted block\n  that should wrap softly\n</code></pre>"
+  },
+  "/user/nobody": {
+    "id": "nobody",
+    "created": "2 days ago",
+    "karma": 1,
+    "avg": null
+  },
+  "/item/12345678": {
+    "id": 12345678,
+    "title": "Poll: Which editor do you use?",
+    "points": 214,
+    "user": "worik",
+    "time": 1490000000,
+    "time_ago": "3 years ago",
+    "type": "poll",
+    "url": "item?id=12345678",
+    "domain": null,
+    "content": "<p>Pick the one you spend the most time in.</p>",
+    "poll": [{ "points": 0, "content": "" }, { "points": 0, "content": "" }, { "points": 0, "content": "" }],
+    "comments_count": 3,
+    "comments": [
+      {
+        "id": 12345690,
+        "level": 0,
+        "user": "worik",
+        "time": 1490000100,
+        "time_ago": "3 years ago",
+        "content": "<p>I still use <i>vi</i> for everything.</p><p>Muscle memory is hard to beat.</p>",
+        "deleted": false,
+        "comments": [
+          {
+            "id": 12345691,
+            "level": 1,
+            "user": "nobody",
+            "time": 1490000200,
+            "time_ago": "3 years ago",
+            "content": "<p>Same here — <a href=\"https://example.com\" rel=\"nofollow\">https://example.com</a> convinced me.</p>",
+            "deleted": false,
+            "comments": []
+          }
+        ]
+      },
+      {
+        "id": 12345692,
+        "level": 0,
+        "user": null,
+        "time": 1490000300,
+        "time_ago": "3 years ago",
+        "content": null,
+        "deleted": true,
+        "comments": []
+      }
+    ]
+  },
+  "/item/12345679": { "points": 120, "content": "<p>Vim</p>" },
+  "/item/12345680": { "points": 80, "content": "<p>Emacs</p>" },
+  "/item/12345681": { "points": 14, "content": "<p>Something else entirely</p>" }
+}
