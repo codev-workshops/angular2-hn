@@ -63,6 +63,25 @@ p {
     letter-spacing: 0.5px;
   }
 
+  .domain-chip {
+    display: inline-block;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    vertical-align: middle;
+    border: 1px solid currentColor;
+    border-radius: 10px;
+    padding: 1px 6px;
+    font-size: 11px;
+    line-height: 1.4;
+
+    @media #{$mobile-only} {
+      font-size: 10px;
+      max-width: 60%;
+    }
+  }
+
   .item-details {
     padding: 10px;
   }
