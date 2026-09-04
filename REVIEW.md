@@ -19,13 +19,13 @@ Run locally (Angular here builds under Node 14: `source ~/.nvm/nvm.sh && nvm use
 
 ```bash
 npm install
-npm run lint     # ng lint -> tslint + codelyzer
+npm run lint     # eslint (@typescript-eslint + @angular-eslint); npm run lint:fix to autofix
 npm run build    # production build; must stay within the angular.json budgets
 npm test         # karma/jasmine
 npm run e2e      # protractor (optional, needs a browser)
 ```
 
-- [ ] `npm run lint` is clean — no new warnings, and no `tslint:disable` without a
+- [ ] `npm run lint` is clean — no new warnings, and no `eslint-disable` without a
       comment explaining why.
 - [ ] `npm run build` succeeds and the initial bundle stays under the budgets declared
       in `angular.json` (warn 2 MB / error 5 MB). Flag any noticeable bundle growth.
@@ -34,7 +34,7 @@ npm run e2e      # protractor (optional, needs a browser)
 
 ## 3. Linting and style rules
 
-Enforced by `tslint.json` / `.editorconfig` — do not weaken them to make code pass:
+Enforced by `.eslintrc.json` / `.editorconfig` — do not weaken them to make code pass:
 
 - [ ] Single quotes, max line length 140, 2-space indentation, final newline, no
       trailing whitespace.
