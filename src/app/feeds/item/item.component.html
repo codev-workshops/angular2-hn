@@ -15,6 +15,10 @@
       <span class="name"><a [routerLink]="['/user', item.user]" routerLinkActive="active">{{item.user}}</a></span>
       <span class="right">{{item.points}} ★</span>
     </div>
+    <div class="details user-rating" *ngIf="item.type !== 'job'">
+      <span class="user-rating-label">Your rating</span>
+      <star-rating [rating]="rating" (ratingChange)="onRatingChange($event)"></star-rating>
+    </div>
     <div class="details">
     {{ item.time_ago }}
     <a [routerLink]="['/item', item.id]" routerLinkActive="active" class="comment-number" *ngIf="item.type !== 'job'"> •
@@ -33,6 +37,10 @@
         <a [routerLink]="['/item', item.id]" routerLinkActive="active">
           {{item.comments_count | comment }}
         </a>
+      </span>
+      <span *ngIf="item.type !== 'job'" class="user-rating"> |
+        <span class="user-rating-label">your rating</span>
+        <star-rating [rating]="rating" (ratingChange)="onRatingChange($event)"></star-rating>
       </span>
     </span>
   </div>
