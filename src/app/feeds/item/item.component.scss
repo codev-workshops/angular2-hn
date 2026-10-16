@@ -66,3 +66,17 @@ p {
   .item-details {
     padding: 10px;
   }
+
+  .user-rating {
+    white-space: nowrap;
+
+    .user-rating-label {
+      font-weight: normal;
+      margin-right: 2px;
+    }
+  }
+
+  .subtext-palm .user-rating {
+    display: flex;
+    align-items: center;
+  }

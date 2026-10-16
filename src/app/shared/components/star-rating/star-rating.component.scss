@@ -1,0 +1,81 @@
+@import "../../scss/theme_variables";
+@import "../../scss/media";
+
+:host {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.star-rating {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.star {
+  background: none;
+  border: 0;
+  margin: 0;
+  padding: 0 1px;
+  font: inherit;
+  font-size: 13px;
+  line-height: 1;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  color: $theme-day-subtext-color;
+
+  @media #{$mobile-only} {
+    font-size: 16px;
+    padding: 0 2px;
+  }
+
+  &.filled {
+    color: $theme-day-secondary-color;
+  }
+
+  &:hover:not(:disabled),
+  &:focus {
+    color: $theme-day-secondary-color;
+  }
+
+  &:focus {
+    outline: 1px dotted $theme-day-secondary-color;
+    outline-offset: 1px;
+  }
+
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  &:disabled {
+    cursor: default;
+  }
+}
+
+:host-context(.night) .star {
+  color: $theme-night-subtext-color;
+
+  &.filled,
+  &:hover:not(:disabled),
+  &:focus {
+    color: $theme-night-secondary-color;
+  }
+
+  &:focus {
+    outline-color: $theme-night-secondary-color;
+  }
+}
+
+:host-context(.amoledblack) .star {
+  color: $theme-amoledblack-subtext-color;
+
+  &.filled,
+  &:hover:not(:disabled),
+  &:focus {
+    color: $theme-amoledblack-text-color;
+  }
+
+  &:focus {
+    outline-color: $theme-amoledblack-text-color;
+  }
+}

@@ -1,0 +1,12 @@
+<span class="star-rating" role="radiogroup" aria-label="Your rating" title="Your rating">
+  <button
+    *ngFor="let star of stars"
+    type="button"
+    class="star"
+    role="radio"
+    [class.filled]="star <= rating"
+    [attr.aria-checked]="star === rating"
+    [attr.aria-label]="star === 1 ? 'Rate 1 star' : 'Rate ' + star + ' stars'"
+    [disabled]="readonly"
+    (click)="rate(star)">{{ star <= rating ? '★' : '☆' }}</button>
+</span>
