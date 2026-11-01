@@ -101,4 +101,8 @@ A million thanks to some awesome people :)
 * [Jeff Cross](https://github.com/jeffbcross)
 * [Minko Gechev](https://github.com/mgechev)
 
-<!-- Dummy change for PR testing -->
+<!--
+  Dummy change for PR workflow testing.
+  This HTML comment is not rendered on GitHub and has no effect on the docs or the app.
+  Safe to remove once the PR process has been verified.
+-->
