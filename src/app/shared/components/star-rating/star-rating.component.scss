@@ -1,0 +1,27 @@
+:host {
+  display: inline-block;
+  margin-left: .4em;
+  margin-right: .4em;
+}
+
+.star-rating {
+  display: inline-flex;
+
+  button {
+    background: transparent;
+    border: 0;
+    padding: 0 .12em;
+    font: inherit;
+    cursor: pointer;
+    color: var(--rating-empty-color);
+
+    &.filled {
+      color: var(--rating-filled-color);
+    }
+
+    &:focus {
+      outline: 1px solid currentColor;
+      outline-offset: 1px;
+    }
+  }
+}
