@@ -15,10 +15,21 @@ module.exports = function (config) {
     client: {
       clearContext: false // leave Jasmine Spec Runner output visible in browser
     },
+    // Instrumentation excludes live in angular.json (test.options.codeCoverageExclude);
+    // this reporter only reports and enforces thresholds.
     coverageIstanbulReporter: {
       dir: require('path').join(__dirname, './coverage/angular-hnpwa'),
-      reports: ['html', 'lcovonly', 'text-summary'],
-      fixWebpackSourcePaths: true
+      reports: ['html', 'lcovonly', 'text', 'text-summary'],
+      fixWebpackSourcePaths: true,
+      thresholds: {
+        emitWarning: false,
+        global: {
+          statements: 80,
+          lines: 80,
+          functions: 80,
+          branches: 80
+        }
+      }
     },
     reporters: ['progress', 'kjhtml'],
     port: 9876,
@@ -26,6 +37,12 @@ module.exports = function (config) {
     logLevel: config.LOG_INFO,
     autoWatch: true,
     browsers: ['Chrome'],
+    customLaunchers: {
+      ChromeHeadlessCI: {
+        base: 'ChromeHeadless',
+        flags: ['--no-sandbox', '--disable-gpu']
+      }
+    },
     singleRun: false,
     restartOnFileChange: true
   });
