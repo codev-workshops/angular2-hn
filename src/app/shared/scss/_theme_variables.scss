@@ -35,3 +35,17 @@ $theme-amoledblack-body-background-color: #000;
 $theme-amoledblack-text-color: rgba(255, 255, 255, 0.75);
 $theme-amoledblack-subtext-color: rgba(255, 255, 255, 0.5);
 $theme-amoledblack-secondary-color: rgba(255, 255, 255, 0.6);
+
+// Extra theme tokens (consumed by the CSS custom properties in _themes.scss)
+$theme-day-border-color: #e4e4e1;
+$theme-day-on-header-color: #fff;
+$theme-day-surface-hover-color: #fbf6f6;
+
+$theme-night-border-color: rgba(255, 255, 255, 0.12);
+$theme-night-on-header-color: #fff;
+$theme-night-surface-hover-color: #3e505a;
+
+$theme-amoledblack-border-color: rgba(255, 255, 255, 0.16);
+$theme-amoledblack-on-header-color: rgba(255, 255, 255, 0.87);
+$theme-amoledblack-surface-hover-color: rgba(255, 255, 255, 0.05);
+$theme-amoledblack-visited-color: darken($theme-amoledblack-text-color, 33%);

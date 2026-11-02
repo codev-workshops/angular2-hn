@@ -1,4 +1,38 @@
+// Angular Material: structural styles + typography (included once).
+// Per-theme Material colors live in ./app/shared/scss/_themes.scss.
+@import '~@angular/material/theming';
+
+$hn-font-family: "system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif";
+
+@include mat-core(mat-typography-config($font-family: $hn-font-family));
+
 @import "./app/shared/scss/themes";
+
+/* ----------------------------------
+
+  Design tokens shared by every theme. Color tokens are defined per theme
+  (.default / .night / .amoledblack) in _themes.scss.
+
+---------------------------------- */
+
+:root {
+  --font-family: #{$hn-font-family};
+  --font-size-xs: 12px;
+  --font-size-sm: 13px;
+  --font-size-base: 15px;
+  --font-size-md: 16px;
+  --font-size-lg: 18px;
+  --font-size-xl: 22px;
+  --font-size-xxl: 32px;
+  --line-height-base: 1.4;
+
+  --header-height: 56px;
+  --content-max-width: 1080px;
+  --radius: 8px;
+  --tap-target: 44px;
+  --focus-ring: 2px solid var(--color-accent);
+  --theme-transition: background-color .3s ease, color .3s ease, border-color .3s ease;
+}
 
 html {
   height: 100%;
@@ -7,12 +41,39 @@ html {
 
 body {
   margin: 0;
-  height: 100%;
+  min-height: 100%;
   width: 100%;
 }
 
 pre {
-    white-space: pre-wrap;
+  white-space: pre-wrap;
+}
+
+/* Keyboard focus indicator; mouse/touch focus stays unstyled. */
+:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: 2px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* The settings dialog renders in the CDK overlay (outside the themed wrapper);
+   AppComponent mirrors the theme class onto the overlay container. */
+.cdk-overlay-pane.settings-dialog .mat-dialog-container {
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  border-radius: var(--radius);
+  font-family: var(--font-family);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
 }
 
 .app-loader {

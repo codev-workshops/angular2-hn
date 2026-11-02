@@ -1,25 +1,19 @@
 <header>
-    <div id="header">
-      <a class="home-link" routerLink="/news/1" routerLinkActive="active" (click)="scrollTop()">
-        <div class="logo-inner"></div>
-        <img class="logo" src="assets/images/logo.svg" alt="Logo">
-      </a>
-      <div class="header-text">
-        <div class="left">
-          <span class="header-nav">
-            <a routerLink="/newest/1" routerLinkActive="active" (click)="scrollTop()">new</a>
-              |
-            <a routerLink="/show/1" routerLinkActive="active" (click)="scrollTop()">show</a>
-              |
-            <a routerLink="/ask/1" routerLinkActive="active" (click)="scrollTop()">ask</a>
-              |
-            <a routerLink="/jobs/1" routerLinkActive="active" (click)="scrollTop()">jobs</a>
-          </span>
-        </div>
-      </div>
-      <div class="info">
-        <img class="settings" src="assets/images/cog.svg" alt="Settings" (click)="toggleSettings()">
-      </div>
-    </div>
-    <app-settings *ngIf="settings.showSettings"></app-settings>
-  </header>
+  <mat-toolbar id="header" class="app-toolbar">
+    <a class="home-link" routerLink="/news/1" routerLinkActive="active" aria-label="Top stories" (click)="scrollTop()">
+      <span class="logo-inner"></span>
+      <img class="logo" src="assets/images/logo.svg" alt="Logo">
+    </a>
+    <nav class="header-nav" aria-label="Feeds">
+      <a routerLink="/newest/1" routerLinkActive="active" (click)="scrollTop()">new</a>
+      <a routerLink="/show/1" routerLinkActive="active" (click)="scrollTop()">show</a>
+      <a routerLink="/ask/1" routerLinkActive="active" (click)="scrollTop()">ask</a>
+      <a routerLink="/jobs/1" routerLinkActive="active" (click)="scrollTop()">jobs</a>
+    </nav>
+    <span class="spacer"></span>
+    <button mat-icon-button type="button" class="settings" aria-label="Settings" aria-haspopup="dialog"
+      (click)="openSettings()">
+      <mat-icon aria-hidden="true">settings</mat-icon>
+    </button>
+  </mat-toolbar>
+</header>

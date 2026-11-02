@@ -1,5 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { routing } from './app.routes';
 
@@ -18,10 +26,18 @@ import { SettingsService } from './shared/services/settings.service';
     declarations: [AppComponent, FeedComponent, ItemComponent],
     imports: [
         BrowserModule,
+        BrowserAnimationsModule,
         routing,
         CoreModule,
         SharedComponentsModule,
         PipesModule,
+        MatDialogModule,
+        MatRadioModule,
+        MatSlideToggleModule,
+        MatInputModule,
+        MatToolbarModule,
+        MatIconModule,
+        MatSidenavModule,
         ServiceWorkerModule.register('ngsw-worker.js', {
             enabled: environment.production,
         }),

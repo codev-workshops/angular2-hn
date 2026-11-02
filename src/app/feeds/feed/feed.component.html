@@ -1,5 +1,10 @@
 <div class="main-content">
-  <app-loader *ngIf="!items && !errorMessage"></app-loader>
+  <ol class="feed-skeleton" *ngIf="!items && !errorMessage" aria-busy="true" aria-label="Loading stories">
+    <li *ngFor="let row of skeletonRows" class="skeleton-card">
+      <span class="skeleton-line skeleton-title"></span>
+      <span class="skeleton-line skeleton-meta"></span>
+    </li>
+  </ol>
   <app-error-message [message]="errorMessage" *ngIf="!items && errorMessage !==''"></app-error-message>
 
   <div *ngIf="items">
@@ -7,18 +12,19 @@
       These are jobs at startups that were funded by Y Combinator.
       You can also get a job at a YC startup through <a href="https://triplebyte.com/?ref=yc_jobs">Triplebyte</a>.
     </p>
-    <ol *ngIf="feedType !== 'new'" [class.list-margin]="feedType !== 'jobs'" start="{{ listStart }}">
-      <li *ngFor="let item of items" class="post">
+    <ol *ngIf="feedType !== 'new'" class="story-list" [class.list-margin]="feedType !== 'jobs'" start="{{ listStart }}">
+      <li *ngFor="let item of items; let i = index" class="post">
+        <span class="itemNum" aria-hidden="true">{{ (pageNum - 1) * 30 + i + 1 }}</span>
         <item class="item-block" [item]="item"></item>
       </li>
     </ol>
-    <div class="nav">
+    <nav class="nav" aria-label="Pagination">
       <a *ngIf="listStart !== 1" [routerLink]="['/' + feedType, pageNum - 1]" routerLinkActive="active" class="prev">
         ‹ Prev
       </a>
       <a *ngIf="items.length === 30" [routerLink]="['/' + feedType, pageNum + 1]" routerLinkActive="active" class="more">
         More ›
       </a>
-    </div>
+    </nav>
   </div>
 </div>

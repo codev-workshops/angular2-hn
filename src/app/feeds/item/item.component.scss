@@ -1,68 +1,69 @@
 @import "../../shared/scss/media";
-@import "../../shared/scss/theme_variables";
 
-p {
-    margin: 2px 0;
+.story {
+  display: block;
+}
 
-    @media #{$mobile-only} {
-      margin-bottom: 5px;
-      margin-top: 0;
-   }
+.title-row {
+  margin: 0 0 6px;
+}
+
+a {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.title {
+  color: var(--color-text);
+  font-size: var(--font-size-md);
+  font-weight: 500;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+
+  &:visited {
+    color: var(--color-link-visited);
   }
+
+  &:hover {
+    color: var(--color-accent);
+  }
+}
+
+.domain {
+  margin-left: 4px;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  letter-spacing: 0.3px;
+}
+
+.subtext {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 12px;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
 
   a {
-    cursor: pointer;
-    text-decoration: none;
-  }
+    color: var(--color-accent);
+    font-weight: 600;
 
-  .title {
-    font-size: 16px;
-    font-family: Verdana, Geneva, sans-serif;
-  }
-
-  .subtext-laptop {
-    font-size: 12px;
-    font-weight: bold;
-    letter-spacing: 0.5px;
-
-    a {
-      &:hover {
-        text-decoration: underline;
-      };
-    }
-    @media #{$mobile-only} {
-      display: none;
+    &:hover {
+      text-decoration: underline;
     }
   }
+}
 
-  .subtext-palm {
-    font-size: 13px;
-    font-weight: bold;
-    letter-spacing: 0.5px;
+.comment-number {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 0 10px;
+  border-radius: 14px;
+  border: 1px solid var(--color-border);
 
-    a {
-      &:hover {
-        text-decoration: underline;
-      };
-    }
-
-    .details {
-      margin-top: 5px;
-
-      .right {
-        float: right;
-      }
-    }
-    @media #{$laptop-only} {
-      display: none;
-    }
+  @media #{$mobile-only} {
+    min-height: 32px;
+    margin-left: auto;
   }
-
-  .domain {
-    color: #696969;
-    letter-spacing: 0.5px;
-  }
-
-  .item-details {
-    padding: 10px;
-  }
+}
