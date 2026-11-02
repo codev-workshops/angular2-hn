@@ -1,0 +1,12 @@
+<span class="star-rating" role="group" aria-label="Your rating">
+  <button
+    *ngFor="let star of stars"
+    type="button"
+    class="star"
+    [class.filled]="star <= rating"
+    [disabled]="!interactive"
+    [attr.title]="label(star)"
+    [attr.aria-label]="label(star)"
+    [attr.aria-pressed]="star <= rating"
+    (click)="rate(star)">{{ star <= rating ? '★' : '☆' }}</button>
+</span>
