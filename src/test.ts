@@ -18,3 +18,6 @@ getTestBed().initTestEnvironment(
 const context = require.context('./', true, /\.spec\.ts$/);
 // And load the modules.
 context.keys().map(context);
+// Load every app source file so files without specs still count toward coverage.
+const appContext = require.context('./app', true, /^(?!.*\.(spec|module)\.ts$).*\.ts$/);
+appContext.keys().map(appContext);
