@@ -30,6 +30,7 @@
       <div class="subtext">
         <span *ngIf="item.type !== 'job'">
         {{item.points}} points by
+          <app-star-rating [itemId]="item.id"></app-star-rating>
           <a [routerLink]="['/user', item.user]" routerLinkActive="active">{{item.user}}</a>
         </span>
         <span [class.item-details]="item.type !== 'job'">

@@ -1,0 +1,10 @@
+<span class="star-rating" role="group" aria-label="Your rating" (mouseleave)="preview = 0">
+  <button *ngFor="let star of stars" type="button"
+    [class.filled]="star <= (preview || rating)"
+    [attr.aria-label]="'Rate ' + star + ' out of ' + stars.length + ' stars; click again to clear'"
+    [attr.aria-pressed]="rating === star"
+    (mouseenter)="preview = star" (focus)="preview = star" (blur)="preview = 0"
+    (click)="rate($event, star)">
+    <span aria-hidden="true">★</span>
+  </button>
+</span>

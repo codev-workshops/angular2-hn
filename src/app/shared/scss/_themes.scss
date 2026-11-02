@@ -19,9 +19,13 @@
   $subtext-color,
   $secondary-link-color,
   $logo-inner-color,
-  $border
+  $border,
+  $rating-filled-color,
+  $rating-empty-color
 ) {
   .#{$name} {
+    --rating-filled-color: #{$rating-filled-color};
+    --rating-empty-color: #{$rating-empty-color};
     .body-cover {
       background: $body-background-color;
 
@@ -205,7 +209,9 @@
   $theme-day-subtext-color,
   $theme-day-secondary-color,
   $theme-day-logo-inner,
-  $theme-day-border
+  $theme-day-border,
+  $theme-day-rating-filled-color,
+  $theme-day-rating-empty-color
 );
 
 @include theme(
@@ -220,7 +226,9 @@
   $theme-night-subtext-color,
   $theme-night-secondary-color,
   $theme-night-logo-inner,
-  $theme-night-border
+  $theme-night-border,
+  $theme-night-rating-filled-color,
+  $theme-night-rating-empty-color
 );
 
 @include theme(
@@ -235,7 +243,9 @@
   $theme-amoledblack-subtext-color,
   $theme-amoledblack-secondary-color,
   $theme-amoledblack-body-background-color,
-  $theme-amoledblack-secondary-color
+  $theme-amoledblack-secondary-color,
+  $theme-amoledblack-rating-filled-color,
+  $theme-amoledblack-rating-empty-color
 );
 
 /* ----------------------------------

@@ -13,7 +13,7 @@
   <div class="subtext-palm">
     <div class="details" *ngIf="item.type !== 'job'">
       <span class="name"><a [routerLink]="['/user', item.user]" routerLinkActive="active">{{item.user}}</a></span>
-      <span class="right">{{item.points}} ★</span>
+      <span class="right">{{item.points}} ★ <app-star-rating [itemId]="item.id"></app-star-rating></span>
     </div>
     <div class="details">
     {{ item.time_ago }}
@@ -25,6 +25,7 @@
   <div class="subtext-laptop">
     <span *ngIf="item.type !== 'job'">
       {{item.points}} points by
+      <app-star-rating [itemId]="item.id"></app-star-rating>
       <a [routerLink]="['/user', item.user]" routerLinkActive="active">{{item.user}}</a>
     </span>
     <span [class.item-details]="item.type !== 'job'">
