@@ -5,6 +5,8 @@ import { SettingsService } from '../../shared/services/settings.service';
 import { Settings } from '../../shared/models/settings';
 import { RatingService } from '../../shared/services/rating.service';
 
+const RATED_FEEDS = ['news', 'newest', 'show', 'ask'];
+
 @Component({
   selector: 'item',
   templateUrl: './item.component.html',
@@ -29,7 +31,7 @@ export class ItemComponent implements OnInit {
   }
 
   get showRating(): boolean {
-    return this.feedType === 'news' && this.item.type !== 'job';
+    return RATED_FEEDS.indexOf(this.feedType) !== -1 && this.item.type !== 'job';
   }
 
   onRated(stars: number): void {
