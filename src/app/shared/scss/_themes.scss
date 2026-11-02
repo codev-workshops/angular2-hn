@@ -1,5 +1,154 @@
 @import "./media";
 @import "./theme_variables";
+@import "~@angular/material/theming";
+
+/* ----------------------------------
+
+  Theme tokens (CSS custom properties)
+
+  Components consume these via var(--...), so adding or tweaking a theme only
+  requires a new `@include theme-tokens(...)` block — no component Sass edits.
+
+---------------------------------- */
+
+@mixin theme-tokens(
+  $name,
+  $bg,
+  $surface,
+  $surface-hover,
+  $text,
+  $text-secondary,
+  $accent,
+  $border,
+  $header-bg,
+  $on-header,
+  $logo-inner,
+  $link-visited
+) {
+  .#{$name} {
+    --color-bg: #{$bg};
+    --color-surface: #{$surface};
+    --color-surface-hover: #{$surface-hover};
+    --color-text: #{$text};
+    --color-text-secondary: #{$text-secondary};
+    --color-accent: #{$accent};
+    --color-border: #{$border};
+    --color-header-bg: #{$header-bg};
+    --color-on-header: #{$on-header};
+    --color-logo-inner: #{$logo-inner};
+    --color-link-visited: #{$link-visited};
+  }
+}
+
+@include theme-tokens(
+  default,
+  $theme-day-wrapper-background-color,
+  $theme-day-body-background-color,
+  $theme-day-surface-hover-color,
+  $theme-day-text-color,
+  $theme-day-subtext-color,
+  $theme-day-secondary-color,
+  $theme-day-border-color,
+  $theme-day-header-background-color,
+  $theme-day-on-header-color,
+  $theme-day-logo-inner,
+  $theme-day-subtext-color
+);
+
+@include theme-tokens(
+  night,
+  $theme-night-wrapper-background-color,
+  $theme-night-body-background-color,
+  $theme-night-surface-hover-color,
+  $theme-night-text-color,
+  $theme-night-subtext-color,
+  $theme-night-secondary-color,
+  $theme-night-border-color,
+  $theme-night-header-background-color,
+  $theme-night-on-header-color,
+  $theme-night-logo-inner,
+  $theme-night-subtext-color
+);
+
+@include theme-tokens(
+  amoledblack,
+  $theme-amoledblack-body-background-color,
+  $theme-amoledblack-body-background-color,
+  $theme-amoledblack-surface-hover-color,
+  $theme-amoledblack-text-color,
+  $theme-amoledblack-subtext-color,
+  $theme-amoledblack-secondary-color,
+  $theme-amoledblack-border-color,
+  $theme-amoledblack-body-background-color,
+  $theme-amoledblack-on-header-color,
+  $theme-amoledblack-body-background-color,
+  $theme-amoledblack-visited-color
+);
+
+/* ----------------------------------
+
+  Angular Material colors per theme. Material's Sass theming can't read CSS
+  custom properties, so each theme gets flat palettes built from the same
+  Sass variables as the tokens above.
+
+---------------------------------- */
+
+@function hn-flat-palette($color, $contrast) {
+  $hues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, A100, A200, A400, A700;
+  $palette: ();
+  $contrasts: ();
+  @each $hue in $hues {
+    $palette: map-merge($palette, ($hue: $color));
+    $contrasts: map-merge($contrasts, ($hue: $contrast));
+  }
+  @return map-merge($palette, (contrast: $contrasts));
+}
+
+@mixin hn-material-theme($theme) {
+  @include mat-core-theme($theme);
+  @include mat-toolbar-theme($theme);
+  @include mat-button-theme($theme);
+  @include mat-icon-theme($theme);
+  @include mat-dialog-theme($theme);
+  @include mat-radio-theme($theme);
+  @include mat-slide-toggle-theme($theme);
+  @include mat-form-field-theme($theme);
+  @include mat-input-theme($theme);
+  @include mat-sidenav-theme($theme);
+}
+
+.default {
+  @include hn-material-theme(mat-light-theme(
+    mat-palette(hn-flat-palette($theme-day-secondary-color, $theme-day-on-header-color)),
+    mat-palette(hn-flat-palette($theme-day-secondary-color, $theme-day-on-header-color))
+  ));
+}
+
+.night {
+  @include hn-material-theme(mat-dark-theme(
+    mat-palette(hn-flat-palette($theme-night-header-background-color, $theme-night-on-header-color)),
+    mat-palette(hn-flat-palette($theme-night-secondary-color, #000))
+  ));
+}
+
+.amoledblack {
+  @include hn-material-theme(mat-dark-theme(
+    mat-palette(hn-flat-palette($theme-amoledblack-body-background-color, #fff)),
+    mat-palette(hn-flat-palette(#bdbdbd, #000))
+  ));
+}
+
+/* ----------------------------------
+
+  Legacy theme mixin (fallback)
+
+  Kept intact for reference/fallback. Components now read the CSS custom
+  properties above, so the generated rules are only emitted when
+  `$enable-legacy-theme-rules` is set to true before importing this file.
+
+---------------------------------- */
+
+$enable-legacy-theme-rules: false !default;
 
 /* ----------------------------------
 
@@ -193,50 +342,52 @@
   }
 }
 
-@include theme(
-  default,
-  $theme-day-body-background-color,
-  $theme-day-wrapper-background-color,
-  $theme-day-wrapper-mobile-background-color,
-  $theme-day-text-color,
-  $theme-day-text-color,
-  $theme-day-subtext-color,
-  $theme-day-header-background-color,
-  $theme-day-subtext-color,
-  $theme-day-secondary-color,
-  $theme-day-logo-inner,
-  $theme-day-border
-);
+@if $enable-legacy-theme-rules {
+  @include theme(
+    default,
+    $theme-day-body-background-color,
+    $theme-day-wrapper-background-color,
+    $theme-day-wrapper-mobile-background-color,
+    $theme-day-text-color,
+    $theme-day-text-color,
+    $theme-day-subtext-color,
+    $theme-day-header-background-color,
+    $theme-day-subtext-color,
+    $theme-day-secondary-color,
+    $theme-day-logo-inner,
+    $theme-day-border
+  );
 
-@include theme(
-  night,
-  $theme-night-body-background-color,
-  $theme-night-wrapper-background-color,
-  $theme-night-wrapper-mobile-background-color,
-  $theme-night-text-color,
-  $theme-night-text-color,
-  $theme-night-subtext-color,
-  $theme-night-header-background-color,
-  $theme-night-subtext-color,
-  $theme-night-secondary-color,
-  $theme-night-logo-inner,
-  $theme-night-border
-);
+  @include theme(
+    night,
+    $theme-night-body-background-color,
+    $theme-night-wrapper-background-color,
+    $theme-night-wrapper-mobile-background-color,
+    $theme-night-text-color,
+    $theme-night-text-color,
+    $theme-night-subtext-color,
+    $theme-night-header-background-color,
+    $theme-night-subtext-color,
+    $theme-night-secondary-color,
+    $theme-night-logo-inner,
+    $theme-night-border
+  );
 
-@include theme(
-  amoledblack,
-  $theme-amoledblack-body-background-color,
-  $theme-amoledblack-body-background-color,
-  $theme-amoledblack-body-background-color,
-  $theme-amoledblack-text-color,
-  $theme-amoledblack-text-color,
-  darken($theme-amoledblack-text-color, 33%),
-  $theme-amoledblack-body-background-color,
-  $theme-amoledblack-subtext-color,
-  $theme-amoledblack-secondary-color,
-  $theme-amoledblack-body-background-color,
-  $theme-amoledblack-secondary-color
-);
+  @include theme(
+    amoledblack,
+    $theme-amoledblack-body-background-color,
+    $theme-amoledblack-body-background-color,
+    $theme-amoledblack-body-background-color,
+    $theme-amoledblack-text-color,
+    $theme-amoledblack-text-color,
+    darken($theme-amoledblack-text-color, 33%),
+    $theme-amoledblack-body-background-color,
+    $theme-amoledblack-subtext-color,
+    $theme-amoledblack-secondary-color,
+    $theme-amoledblack-body-background-color,
+    $theme-amoledblack-secondary-color
+  );
+}
 
 /* ----------------------------------
 

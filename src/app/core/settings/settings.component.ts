@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 
 import { SettingsService } from '../../shared/services/settings.service';
 import { Settings } from '../../shared/models/settings';
@@ -8,33 +9,42 @@ import { Settings } from '../../shared/models/settings';
   templateUrl: './settings.component.html',
   styleUrls: ['./settings.component.scss']
 })
-export class SettingsComponent implements OnInit {
+export class SettingsComponent {
   settings: Settings;
+  themes = [
+    { value: 'default', label: 'Default' },
+    { value: 'night', label: 'Night' },
+    { value: 'amoledblack', label: 'Black (AMOLED)' },
+  ];
 
-  constructor(private _settingsService: SettingsService) {
+  constructor(
+    private _settingsService: SettingsService,
+    private dialogRef: MatDialogRef<SettingsComponent>
+  ) {
     this.settings = this._settingsService.settings;
   }
 
-  ngOnInit() {
-  }
-
   closeSettings() {
-    this._settingsService.toggleSettings();
+    this.dialogRef.close();
   }
 
   toggleOpenLinksInNewTab() {
     this._settingsService.toggleOpenLinksInNewTab();
   }
 
-  selectTheme(theme) {
+  selectTheme(theme: string) {
     this._settingsService.setTheme(theme);
   }
 
-  changeTitleFont(val){
-    this._settingsService.setFont(val);
+  changeTitleFont(val: string) {
+    if (val !== '' && +val >= 1) {
+      this._settingsService.setFont(val);
+    }
   }
 
-  changeSpacing(val){
-    this._settingsService.setSpacing(val);
+  changeSpacing(val: string) {
+    if (val !== '' && +val >= 0) {
+      this._settingsService.setSpacing(val);
+    }
   }
 }

@@ -1,89 +1,66 @@
 @import "../shared/scss/media";
-@import "../shared/scss/theme_variables";
-
-:host >>> pre {
-  white-space: pre-wrap;
-}
 
 .profile {
-  padding: 30px;
-}
+  padding: 0 16px 16px;
 
-@media #{$mobile-only} {
-  .profile {
-    padding: 110px 15px 0 15px;
-  }
-  .title-block {
-    font-size: 15px;
-    text-align: center;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-    margin: 0 75px;
-  }
-  .back-button {
-    position: absolute;
-    top: 52%;
-    width: 0.6rem;
-    height: 0.6rem;
-    background: transparent;
-    box-shadow: 0 0 0 lightgray;
-    transition: all 200ms ease;
-    left: 4%;
-    transform: translate3d(0, -50%, 0) rotate(-135deg);
-  }
-  .item-header {
-    padding-bottom: 10px;
-    background-color: #fff;
-    padding: 10px 0 10px 0;
-    position: fixed;
-    width: 100%;
-    left: 0;
-    top: 62px;
-    height: 20px;
+  @media #{$mobile-only} {
+    padding: 0 8px 8px;
   }
 }
 
-@media #{$laptop-only} {
-  .mobile {
-    display: none;
+.profile-card {
+  margin-top: 16px;
+  padding: 20px 24px;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  transition: var(--theme-transition);
+
+  @media #{$mobile-only} {
+    margin-top: 8px;
+    padding: 16px;
   }
 }
 
 .main-details {
-  .name {
-    font-weight: bold;
-    font-size: 32px;
-    letter-spacing: 2px;
-  }
-  .age {
-    font-weight: bold;
-    color: #696969;
-    padding-bottom: 0;
-  }
-  .right {
-    float: right;
-    font-weight: bold;
-    font-size: 32px;
-    letter-spacing: 2px;
-  }
-}
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
 
-@media #{$mobile-only} {
-  .main-details {
-    margin-top: 20px;
-    .name {
-      font-size: 18px;
+  .name,
+  .right {
+    font-weight: bold;
+    font-size: var(--font-size-xxl);
+    letter-spacing: 1px;
+    color: var(--color-accent);
+
+    @media #{$mobile-only} {
+      font-size: var(--font-size-lg);
     }
   }
+
+  .name {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .right {
+    flex-shrink: 0;
+  }
 }
 
-@media #{$mobile-only} {
-  .main-details .right {
-    font-size: 18px;
-  }
+.age {
+  font-weight: bold;
+  color: var(--color-text-secondary);
+  margin: 8px 0 0;
 }
 
 .other-details {
-  word-wrap: break-word;
+  overflow-wrap: anywhere;
+  line-height: 1.5;
+
+  ::ng-deep a {
+    color: var(--color-accent);
+  }
 }

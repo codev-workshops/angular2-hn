@@ -1,0 +1,32 @@
+:host {
+  display: block;
+  position: sticky;
+  top: var(--header-height);
+  z-index: 5;
+  background-color: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+  transition: var(--theme-transition);
+}
+
+.sub-header {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-height: var(--tap-target);
+  padding: 4px 8px 4px 0;
+}
+
+.back-button {
+  flex-shrink: 0;
+  color: var(--color-accent);
+}
+
+.title-block {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: var(--font-size-base);
+  font-weight: 600;
+}

@@ -1,74 +1,70 @@
-@import "../../shared/scss/media";
-@import "../../shared/scss/theme_variables";
-
-.overlay {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgba(0, 0, 0, 0.7);
-  opacity: 1;
-  z-index: 1;
+:host {
+  display: block;
+  color: var(--color-text);
 }
 
-.popup {
-  margin: 70px auto;
-  padding: 30px;
-  border-radius: 5px;
-  width: 30%;
-  position: relative;
-  h1 {
-    margin-top: 0;
-    margin-bottom: 0px;
-    color: #fff;
-    text-align: center;
-    letter-spacing: 1px;
-  }
-  h2 {
-    padding-top: 10px;
-  }
-  hr {
-    width: 40%;
-    margin-bottom: 20px;
-  }
-  .close {
-    position: absolute;
-    top: 12px;
-    right: 20px;
-    font-size: 30px;
-    font-weight: bold;
-    text-decoration: none;
-    color: rgba(255,255,255,0.8);
-    &:hover {
-      color: #fff;
-      cursor: pointer;
-    }
-  }
-  .content {
-    max-height: 30%;
-    color: #fff;
-    letter-spacing: 1px;
-    overflow: auto;
-  }
-  input[type=number] {
-      display: block;
-      width: 80%;
-      height: 20px;
-      margin-bottom: 15px;
-      border-radius: 5px;
-      padding: 2px;
-  }
+.settings-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.settings-title.mat-dialog-title {
+  margin: 0;
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  letter-spacing: .5px;
+}
+
+.close {
+  color: var(--color-text-secondary);
+}
+
+.content.mat-dialog-content {
+  margin-top: 8px;
 }
 
 .control-section {
-    margin-bottom: 15px;
-    padding-bottom: 15px;
-    border-bottom: 1px solid white;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--color-border);
+
+  &:last-child {
+    border-bottom: 0;
+  }
 }
 
-@media screen and (max-width: 700px) {
-  .box, .popup {
-    width: 70%;
+.section-title {
+  margin: 0 0 12px;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+
+.theme-options {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  .mat-radio-button {
+    min-height: 36px;
+    display: flex;
+    align-items: center;
   }
+}
+
+.fields {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 16px;
+
+  .mat-form-field {
+    flex: 1 1 140px;
+  }
+}
+
+.done {
+  color: var(--color-accent);
+  font-weight: 600;
 }

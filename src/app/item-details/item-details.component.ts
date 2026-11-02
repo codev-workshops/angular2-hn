@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
 import { Subscription } from 'rxjs/Subscription';
 
 import { HackerNewsAPIService } from '../shared/services/hackernews-api.service';
@@ -23,8 +22,7 @@ export class ItemDetailsComponent implements OnInit {
   constructor(
     private _hackerNewsAPIService: HackerNewsAPIService,
     private _settingsService: SettingsService,
-    private route: ActivatedRoute,
-    private _location: Location
+    private route: ActivatedRoute
   ) {
     this.settings = this._settingsService.settings;
   }
@@ -37,10 +35,6 @@ export class ItemDetailsComponent implements OnInit {
       }, error => this.errorMessage = 'Could not load item comments.');
     });
     window.scrollTo(0, 0);
-  }
-
-  goBack() {
-    this._location.back();
   }
 
   get hasUrl(): boolean {

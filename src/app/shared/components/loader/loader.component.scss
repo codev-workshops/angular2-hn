@@ -1,7 +1,8 @@
 @import "../../scss/media";
-@import "../../scss/theme_variables";
 
 .loader {
+  color: var(--color-accent);
+  background: var(--color-accent);
   -webkit-animation: load1 1s infinite ease-in-out;
   animation: load1 1s infinite ease-in-out;
   width: 1em;
@@ -13,6 +14,7 @@
     height: 4em;
   }
   &:before, &:after {
+    background: var(--color-accent);
     position: absolute;
     top: 0;
     content: '';

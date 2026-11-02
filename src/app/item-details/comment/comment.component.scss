@@ -1,8 +1,8 @@
 @import "../../shared/scss/media";
-@import "../../shared/scss/theme_variables";
 
-:host >>> {
+:host ::ng-deep {
   a {
+    color: var(--color-accent);
     font-weight: bold;
     text-decoration: none;
     &:hover {
@@ -12,8 +12,8 @@
 }
 
 .meta {
-  font-size: 13px;
-  color: #696969;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
   font-weight: bold;
   letter-spacing: 0.5px;
   margin-bottom: 8px;
@@ -31,7 +31,7 @@
 
 @media #{$mobile-only} {
   .meta {
-    font-size: 14px;
+    font-size: var(--font-size-sm);
     margin-bottom: 10px;
     .time {
       padding: 0;
@@ -45,7 +45,8 @@
 }
 
 .deleted-meta {
-  font-size: 12px;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
   font-weight: bold;
   letter-spacing: 0.5px;
   margin: 30px 0;
@@ -55,23 +56,35 @@
 }
 
 .collapse {
-  font-size: 13px;
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 0 4px;
+  font-size: var(--font-size-sm);
   letter-spacing: 2px;
   cursor: pointer;
+  border-radius: 4px;
+
+  &:hover {
+    background-color: var(--color-surface-hover);
+  }
 }
 
 .comment-tree {
-  margin-left: 24px;
+  margin-left: 6px;
+  padding-left: 16px;
+  border-left: 2px solid var(--color-border);
 }
 
 @media #{$tablet-only} {
   .comment-tree {
-    margin-left: 8px;
+    margin-left: 4px;
+    padding-left: 8px;
   }
 }
 
 .comment-text {
-  font-size: 15px;
+  font-size: var(--font-size-base);
   margin-top: 0;
   margin-bottom: 20px;
   word-wrap: break-word;

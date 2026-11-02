@@ -1,5 +1,4 @@
 @import "../../shared/scss/media";
-@import "../../shared/scss/theme_variables";
 
 #footer {
   position: relative;
@@ -7,9 +6,13 @@
   height: 60px;
   letter-spacing: 0.7px;
   text-align: center;
+  border-top: 1px solid var(--color-border);
+  color: var(--color-text-secondary);
+  transition: var(--theme-transition);
 
   a {
-  	font-weight: bold;
+    color: var(--color-accent);
+    font-weight: bold;
   	text-decoration: none;
 
     &:hover {
