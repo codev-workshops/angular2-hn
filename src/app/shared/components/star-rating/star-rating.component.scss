@@ -1,0 +1,43 @@
+// Colours come from the theme mixin in src/app/shared/scss/_themes.scss
+// (.star-rating .star / .star.filled), so this file only handles layout and states.
+
+:host {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.star-rating {
+  display: inline-flex;
+  align-items: center;
+}
+
+.star {
+  background: none;
+  border: 0;
+  border-radius: 3px;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  font-size: 16px;
+  line-height: 1;
+  margin: 0;
+  padding: 2px 3px;
+  transition: transform 120ms ease, color 120ms ease;
+
+  &:hover {
+    transform: scale(1.2);
+  }
+
+  &:focus {
+    outline: 2px solid currentColor;
+    outline-offset: 1px;
+  }
+
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}

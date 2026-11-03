@@ -13,6 +13,7 @@ $theme-day-subtext-color: #696969;
 $theme-day-secondary-color: #b92b27;
 $theme-day-header-background-color: $theme-day-secondary-color;
 $theme-day-logo-inner: #fff;
+$theme-day-star-color: $theme-day-secondary-color;
 
 // Day theme extras
 $theme-day-border: 2px solid #b92b27;
@@ -26,6 +27,7 @@ $theme-night-subtext-color: #999;
 $theme-night-secondary-color: #00c0ff;
 $theme-night-header-background-color: #263238;
 $theme-night-logo-inner: $theme-night-header-background-color;
+$theme-night-star-color: $theme-night-secondary-color;
 
 // Night theme extras
 $theme-night-border: 2px solid #00c0ff;
@@ -35,3 +37,5 @@ $theme-amoledblack-body-background-color: #000;
 $theme-amoledblack-text-color: rgba(255, 255, 255, 0.75);
 $theme-amoledblack-subtext-color: rgba(255, 255, 255, 0.5);
 $theme-amoledblack-secondary-color: rgba(255, 255, 255, 0.6);
+// Secondary colour is only 0.6 white, too close to the 0.5 white subtext for unfilled stars.
+$theme-amoledblack-star-color: #fff;

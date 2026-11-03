@@ -40,7 +40,13 @@
             </a>
           </span>
         </span>
+        <span class="rating" *ngIf="item.type !== 'job'">
+          <app-star-rating [itemId]="item.id"></app-star-rating>
+        </span>
       </div>
+    </div>
+    <div class="mobile subtext rating" *ngIf="item.type !== 'job'">
+      <app-star-rating [itemId]="item.id"></app-star-rating>
     </div>
     <div *ngIf="item.type === 'poll'" class="pollResults">
       <div *ngFor="let pollResult of item.poll" class="pollContent">
