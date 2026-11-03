@@ -1,0 +1,14 @@
+<span class="star-rating" role="group" aria-label="Rate this post" (mouseleave)="hoveredStar = 0">
+  <button
+    *ngFor="let star of stars"
+    type="button"
+    class="star"
+    [class.filled]="isFilled(star)"
+    [attr.aria-label]="'Rate ' + star + (star === 1 ? ' star' : ' stars')"
+    [attr.aria-pressed]="star === rating"
+    [attr.title]="star === rating ? 'Clear rating' : 'Rate ' + star + (star === 1 ? ' star' : ' stars')"
+    (mouseenter)="hoveredStar = star"
+    (focus)="hoveredStar = star"
+    (blur)="hoveredStar = 0"
+    (click)="rate(star)">{{ isFilled(star) ? '★' : '☆' }}</button>
+</span>
