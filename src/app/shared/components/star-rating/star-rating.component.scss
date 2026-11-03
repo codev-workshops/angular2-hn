@@ -1,3 +1,5 @@
+@import "../../scss/media";
+
 // Colours come from the theme mixin in src/app/shared/scss/_themes.scss
 // (.star-rating .star / .star.filled), so this file only handles layout and states.
 
@@ -21,8 +23,16 @@
   font-size: 16px;
   line-height: 1;
   margin: 0;
+  min-height: 24px;
+  min-width: 24px;
   padding: 2px 3px;
   transition: transform 120ms ease, color 120ms ease;
+
+  @media #{$mobile-only} {
+    font-size: 20px;
+    min-height: 32px;
+    min-width: 32px;
+  }
 
   &:hover {
     transform: scale(1.2);
