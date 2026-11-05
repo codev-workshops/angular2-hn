@@ -99,7 +99,13 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "codeCoverageExclude": [
+              "src/main.ts",
+              "src/polyfills.ts",
+              "src/test.ts",
+              "src/environments/**"
+            ]
           }
         },
         "lint": {
