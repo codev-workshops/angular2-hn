@@ -18,3 +18,6 @@ getTestBed().initTestEnvironment(
 const context = require.context('./', true, /\.spec\.ts$/);
 // And load the modules.
 context.keys().map(context);
+// Keep spec discovery first: Angular CLI replaces the first context for --include.
+const sources = require.context('./app', true, /^(?!.*(?:\.spec\.ts$|\/testing\/)).*\.ts$/);
+sources.keys().map(sources);
