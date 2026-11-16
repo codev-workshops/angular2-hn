@@ -10,6 +10,7 @@ export class StubErrorMessageComponent {
   @Input() message: string;
 }
 
+// Must match the real ItemComponent selector 'item', which predates the 'app-' prefix rule.
 // tslint:disable-next-line:component-selector
 @Component({ selector: 'item', template: '' })
 export class StubItemComponent {
