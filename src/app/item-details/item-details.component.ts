@@ -21,18 +21,18 @@ export class ItemDetailsComponent implements OnInit {
   settings: Settings;
 
   constructor(
-    private _hackerNewsAPIService: HackerNewsAPIService,
-    private _settingsService: SettingsService,
+    private hackerNewsAPIService: HackerNewsAPIService,
+    private settingsService: SettingsService,
     private route: ActivatedRoute,
-    private _location: Location
+    private location: Location
   ) {
-    this.settings = this._settingsService.settings;
+    this.settings = this.settingsService.settings;
   }
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
-      let itemID = +params['id'];
-      this._hackerNewsAPIService.fetchItemContent(itemID).subscribe(item => {
+      const itemID = +params.id;
+      this.hackerNewsAPIService.fetchItemContent(itemID).subscribe(item => {
         this.item = item;
       }, error => this.errorMessage = 'Could not load item comments.');
     });
@@ -40,7 +40,7 @@ export class ItemDetailsComponent implements OnInit {
   }
 
   goBack() {
-    this._location.back();
+    this.location.back();
   }
 
   get hasUrl(): boolean {

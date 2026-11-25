@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { SettingsService } from '../../shared/services/settings.service';
 import { Settings } from '../../shared/models/settings';
@@ -8,18 +8,15 @@ import { Settings } from '../../shared/models/settings';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
   settings: Settings;
 
-  constructor(private _settingsService: SettingsService) {
-    this.settings = this._settingsService.settings;
-  }
-
-  ngOnInit() {
+  constructor(private settingsService: SettingsService) {
+    this.settings = this.settingsService.settings;
   }
 
   toggleSettings() {
-    this._settingsService.toggleSettings();
+    this.settingsService.toggleSettings();
   }
 
   scrollTop() {
