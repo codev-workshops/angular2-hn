@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import { Subscription } from 'rxjs/Subscription';
 
 import { HackerNewsAPIService } from '../shared/services/hackernews-api.service';
 import { SettingsService } from '../shared/services/settings.service';
@@ -14,6 +15,7 @@ import { Settings } from '../shared/models/settings';
   styleUrls: ['./item-details.component.scss']
 })
 export class ItemDetailsComponent implements OnInit {
+  sub: Subscription;
   item: Story;
   errorMessage = '';
   settings: Settings;
@@ -28,7 +30,7 @@ export class ItemDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.route.params.subscribe(params => {
+    this.sub = this.route.params.subscribe(params => {
       const itemID = +params.id;
       this.hackerNewsAPIService.fetchItemContent(itemID).subscribe(item => {
         this.item = item;
