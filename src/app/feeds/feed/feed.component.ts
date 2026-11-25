@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
@@ -12,9 +12,9 @@ import { Story } from '../../shared/models/story';
   styleUrls: ['./feed.component.scss']
 })
 
-export class FeedComponent implements OnInit {
+export class FeedComponent implements OnInit, OnDestroy {
   typeSub: Subscription;
-  pageSub: Subscription;
+  pageSub = new Subscription();
   items: Story[];
   feedType: string;
   pageNum: number;
@@ -22,7 +22,7 @@ export class FeedComponent implements OnInit {
   errorMessage = '';
 
   constructor(
-    private _hackerNewsAPIService: HackerNewsAPIService,
+    private hackerNewsAPIService: HackerNewsAPIService,
     private route: ActivatedRoute
   ) { }
 
@@ -33,9 +33,9 @@ export class FeedComponent implements OnInit {
         this.feedType = (data as any).feedType;
       });
 
-    this.pageSub = this.route.params.subscribe(params => {
-      this.pageNum = params['page'] ? +params['page'] : 1;
-      this._hackerNewsAPIService.fetchFeed(this.feedType, this.pageNum)
+    this.pageSub.add(this.route.params.subscribe(params => {
+      this.pageNum = params.page ? +params.page : 1;
+      const request = this.hackerNewsAPIService.fetchFeed(this.feedType, this.pageNum)
         .subscribe(
           items => this.items = items,
           error => this.errorMessage = 'Could not load ' + this.feedType + ' stories.',
@@ -44,6 +44,12 @@ export class FeedComponent implements OnInit {
             window.scrollTo(0, 0);
           }
         );
-    });
+      this.pageSub.add(request);
+    }));
+  }
+
+  ngOnDestroy() {
+    this.typeSub?.unsubscribe();
+    this.pageSub.unsubscribe();
   }
 }
