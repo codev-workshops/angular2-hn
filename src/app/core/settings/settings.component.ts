@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { SettingsService } from '../../shared/services/settings.service';
 import { Settings } from '../../shared/models/settings';
@@ -8,33 +8,30 @@ import { Settings } from '../../shared/models/settings';
   templateUrl: './settings.component.html',
   styleUrls: ['./settings.component.scss']
 })
-export class SettingsComponent implements OnInit {
+export class SettingsComponent {
   settings: Settings;
 
-  constructor(private _settingsService: SettingsService) {
-    this.settings = this._settingsService.settings;
-  }
-
-  ngOnInit() {
+  constructor(private settingsService: SettingsService) {
+    this.settings = this.settingsService.settings;
   }
 
   closeSettings() {
-    this._settingsService.toggleSettings();
+    this.settingsService.toggleSettings();
   }
 
   toggleOpenLinksInNewTab() {
-    this._settingsService.toggleOpenLinksInNewTab();
+    this.settingsService.toggleOpenLinksInNewTab();
   }
 
   selectTheme(theme) {
-    this._settingsService.setTheme(theme);
+    this.settingsService.setTheme(theme);
   }
 
-  changeTitleFont(val){
-    this._settingsService.setFont(val);
+  changeTitleFont(val) {
+    this.settingsService.setFont(val);
   }
 
-  changeSpacing(val){
-    this._settingsService.setSpacing(val);
+  changeSpacing(val) {
+    this.settingsService.setSpacing(val);
   }
 }

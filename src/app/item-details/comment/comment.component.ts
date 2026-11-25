@@ -11,8 +11,6 @@ export class CommentComponent implements OnInit {
   @Input() comment: Comment;
   collapse: boolean;
 
-  constructor() {}
-
   ngOnInit() {
     this.collapse = false;
   }
