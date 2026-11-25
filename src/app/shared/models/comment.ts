@@ -3,6 +3,7 @@ export class Comment {
     level: number;
     user: string;
     time: number;
+    // tslint:disable-next-line:variable-name
     time_ago: string;
     content: string;
     deleted: boolean;
